@@ -1,14 +1,18 @@
 package team.dorm301.letterhome.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import team.dorm301.letterhome.R;
+import team.dorm301.letterhome.base.BaseActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_main;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
     }
 }
