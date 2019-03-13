@@ -13,12 +13,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 import butterknife.ButterKnife;
+import java.util.HashMap;
+import java.util.Map;
 import team.dorm301.letterhome.permission.ActivityCallback;
 import team.dorm301.letterhome.permission.ActivityRequestCode;
 import team.dorm301.letterhome.permission.PermissionCallback;
 import team.dorm301.letterhome.permission.PermissionRequestCode;
-import java.util.HashMap;
-import java.util.Map;
 
 import pers.geolo.util.SingletonHolder;
 
@@ -29,6 +29,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     private final Map<ActivityRequestCode, ActivityCallback> activityCallbackMap = new HashMap<>();
     private final Map<PermissionRequestCode, PermissionCallback> permissionCallbackMap = new HashMap<>();
 
+    protected abstract int getContentView();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +38,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    protected abstract int getContentView();
 
     public void addActivityRequest(ActivityRequestCode requestCode, ActivityCallback callback) {
         activityCallbackMap.put(requestCode, callback);
