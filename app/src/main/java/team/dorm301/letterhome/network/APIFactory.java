@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class APIFactory {
 
     private static final long DEFAULT_TIME_OUT = 10;
-    private static String baseUrl = "http://192.168.3.13:8080/GuitarWorld/";
+    private static String baseUrl = "";
     private Retrofit retrofit;
 
     public APIFactory() {
