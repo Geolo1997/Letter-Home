@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class APIFactory {
 
     private static final long DEFAULT_TIME_OUT = 10;
-    private static String baseUrl = "XXX";
+    private static String baseUrl = "XXXXXX";
     private Retrofit retrofit;
 
     public APIFactory() {
