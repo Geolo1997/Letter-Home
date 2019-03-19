@@ -11,6 +11,9 @@ import org.litepal.crud.DataSupport;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.base.BaseActivity;
 import team.dorm301.letterhome.entity.User;
+import team.dorm301.letterhome.network.HttpService;
+import team.dorm301.letterhome.network.NetworkCallback;
+import team.dorm301.letterhome.network.api.UserAPI;
 
 public class LoginActivity extends BaseActivity {
 
@@ -129,5 +132,23 @@ public class LoginActivity extends BaseActivity {
             startActivity(intent);
             finish();
         }
+
+        HttpService.getInstance().getAPI(UserAPI.class)
+                .login("23","34").enqueue(new NetworkCallback<Void>() {
+            @Override
+            public void onSuccess(Void responseData) {
+
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMessage) {
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
     }
 }

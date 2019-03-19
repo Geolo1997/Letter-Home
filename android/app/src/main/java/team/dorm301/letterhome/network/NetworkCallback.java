@@ -19,7 +19,12 @@ public abstract class NetworkCallback<T> implements Callback<ResponseBody<T>> {
     public final void onResponse(Call<ResponseBody<T>> call, Response<ResponseBody<T>> response) {
         ResponseBody<T> responseBody = response.body();
         Headers headers = response.headers();
-
+//        int code = response.code();
+//        if (code == 200) {
+//            onSuccess(responseBody.getData());
+//        } else {
+//            onError(code, responseBody.getMessage());
+//        }
         if (responseBody == null) {
             Log.d(TAG, "网络错误");
             onFailure();
