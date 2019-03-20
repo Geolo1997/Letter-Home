@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -32,10 +31,6 @@ public class LoginActivity extends BaseActivity {
     TextView hintText;
     @BindView(R.id.login_button)
     Button loginButton;
-    @BindView(R.id.forget_text)
-    TextView forgetText;
-    @BindView(R.id.register_text)
-    TextView registerText;
 
     @Override
     protected int getContentView() {
