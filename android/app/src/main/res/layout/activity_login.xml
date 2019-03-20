@@ -1,53 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical">
-    <View
-        android:id="@+id/status_bar"
+
+    <EditText
+        android:id="@+id/username_edit_text"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:orientation="vertical">
-        <EditText
-            android:id="@+id/username_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textSize="20sp"
-            android:maxLines="1"
-            android:hint="@string/username" />
+        android:hint="@string/username"
+        android:maxLines="1"
+        android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/password_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textSize="20sp"
-            android:maxLines="1"
-            android:inputType="textPassword"
-            android:hint="@string/password" />
+    <EditText
+        android:id="@+id/password_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/login_button"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:text="@string/login"
-            android:textSize="18sp"
-            android:textColor="#d4ffffff"
-            android:letterSpacing="1"
-            android:background="#d93fb5ff"/>
-    </LinearLayout>
-</RelativeLayout>
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:background="#d93fb5ff"
+        android:letterSpacing="1"
+        android:text="@string/login"
+        android:textColor="#d4ffffff"
+        android:textSize="18sp" />
+</LinearLayout>
