@@ -1,5 +1,8 @@
 package team.dorm301.letterhome.entity;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+import team.dorm301.letterhome.config.ContextConfig;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,5 +69,11 @@ public class User {
 
     public void setLetters(List<Letter> letters) {
         this.letters = letters;
+    }
+
+    @PrePersist
+    public void encode() {
+        PasswordEncoder encoder = ContextConfig.getContext().getBean(PasswordEncoder.class);
+        this.password = encoder.encode(this.password);
     }
 }
