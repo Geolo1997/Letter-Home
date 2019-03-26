@@ -16,4 +16,17 @@ public class Yunzhi {
     public static Long getTimeout() {
         return Configuration.getInstance().getTimeout();
     }
+
+    public static String getToken() {
+        return Configuration.getInstance().getToken();
+    }
+
+    public static void setToken(String token) {
+        Configuration.getInstance().setToken(token);
+    }
+
+    public static void clearToken() {
+        Configuration.getInstance().clearToken();
+    }
 }
+
