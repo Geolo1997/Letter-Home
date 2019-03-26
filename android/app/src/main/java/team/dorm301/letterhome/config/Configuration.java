@@ -10,6 +10,7 @@ public class Configuration {
 
     private static final String API_KEY = "API";
     private static final String TIMEOUT_KEY = "TIMEOUT";
+    private static final String TOKEN_KEY = "TOKEN";
 
     private static Map<String, Object> config = new HashMap<>();
 
@@ -37,5 +38,18 @@ public class Configuration {
 
     public Long getTimeout() {
         return (Long) config.get(TIMEOUT_KEY);
+    }
+
+    public Configuration setToken(String token) {
+        config.put(TOKEN_KEY, token);
+        return this;
+    }
+
+    public String getToken() {
+        return (String) config.get(TOKEN_KEY);
+    }
+
+    public void clearToken() {
+        config.remove(TOKEN_KEY);
     }
 }
