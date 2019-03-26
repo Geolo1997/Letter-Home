@@ -14,6 +14,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.base.BaseActivity;
+import team.dorm301.letterhome.config.Yunzhi;
 import team.dorm301.letterhome.entity.Auth;
 import team.dorm301.letterhome.http.HttpClient;
 import team.dorm301.letterhome.service.AuthService;
@@ -55,23 +56,21 @@ public class LoginActivity extends BaseActivity {
                 .subscribe(new Observer<Auth>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        showLongToast("onSubscribe");
                     }
 
                     @Override
                     public void onNext(Auth auth) {
-                        showLongToast("onNext");
-                        showLongToast(auth.getToken());
+                        Yunzhi.setToken(auth.getToken());
+                        startActivity(MainActivity.class);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        showLongToast("onError");
+                        showLongToast("用户名或密码错误");
                     }
 
                     @Override
                     public void onComplete() {
-                        showLongToast("onComplete");
                     }
                 });
     }
