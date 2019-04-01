@@ -1,22 +1,17 @@
 package team.dorm301.letterhome.activity;
 
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.EditText;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.base.BaseActivity;
 import team.dorm301.letterhome.config.Yunzhi;
 import team.dorm301.letterhome.entity.Auth;
-import team.dorm301.letterhome.http.HttpClient;
 import team.dorm301.letterhome.service.AuthService;
 
 public class LoginActivity extends BaseActivity {
@@ -25,8 +20,8 @@ public class LoginActivity extends BaseActivity {
     EditText usernameEditText;
     @BindView(R.id.password_edit_text)
     EditText passwordEditText;
-    @BindView(R.id.login_button)
-    Button loginButton;
+
+    private AuthService authService;
 
     @Override
     protected int getContentView() {
@@ -36,6 +31,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.authService = Yunzhi.getBean(AuthService.class);
     }
 
     @OnClick(R.id.login_button)
@@ -44,34 +40,29 @@ public class LoginActivity extends BaseActivity {
         String username = this.usernameEditText.getText().toString();
         String password = this.passwordEditText.getText().toString();
 
-        Log.d(TAG, "BASIC 认证");
-        String credentials = username + ":" + password;
-        String basicAuth = "Basic " + Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
-
         Log.d(TAG, "请求登录");
-        HttpClient.request(AuthService.class)
-                .login(basicAuth)
-                .subscribeOn(Schedulers.io())                  // 在IO线程发起网络请求
-                .observeOn(AndroidSchedulers.mainThread())     // 在主线程处理
-                .subscribe(new Observer<Auth>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                    }
+        this.authService.login(username, password)
+            .subscribe(new Observer<Auth>() {
+                @Override
+                public void onSubscribe(Disposable d) {
 
-                    @Override
-                    public void onNext(Auth auth) {
-                        Yunzhi.setToken(auth.getToken());
-                        startActivity(MainActivity.class);
-                    }
+                }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        showLongToast("用户名或密码错误");
-                    }
+                @Override
+                public void onNext(Auth auth) {
+                    Yunzhi.setToken(auth.getToken());
+                    startActivity(MainActivity.class);
+                }
 
-                    @Override
-                    public void onComplete() {
-                    }
-                });
+                @Override
+                public void onError(Throwable e) {
+                    showLongToast("用户名或密码错误");
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            });
     }
 }
