@@ -28,5 +28,9 @@ public class Yunzhi {
     public static void clearToken() {
         Configuration.getInstance().clearToken();
     }
+
+    public static <T> T getBean(Class<?> clazz) {
+        return Configuration.getInstance().getBean(clazz);
+    }
 }
 
