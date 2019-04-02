@@ -43,6 +43,7 @@ public class LoadingActivity extends BaseActivity {
                         @Override
                         public void onSuccess(Void responseData) {
                             startActivityAndFinish(MainActivity.class);
+
                         }
 
                         @Override
@@ -56,7 +57,8 @@ public class LoadingActivity extends BaseActivity {
                         }
                     });
                 } else {
-                    startActivityAndFinish(MainActivity.class);
+                    //startActivityAndFinish(MainActivity.class);
+                    startActivityAndFinish(LoginActivity.class);
                 }
             }
         }.start();

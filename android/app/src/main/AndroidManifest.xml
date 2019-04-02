@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
-
         </activity>
         <activity android:name=".activity.LoadingActivity">
             <intent-filter>
@@ -19,7 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SendLetterActivity"/>
+        <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.RegisterActivity"/>
+        <activity android:name=".activity.WriteMailContentActivity"/>
+        <activity android:name=".activity.WriteReceiverInformationActivity"/>
+        <activity android:name=".activity.FindPasswordActivity"/>
+        //<activity android:name=".activity.SendLetterActivity"/>
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/view_toolbar"/>
+        layout="@layout/view_toolbar" />
 
     <TextView
         android:id="@+id/tv_dynamic"

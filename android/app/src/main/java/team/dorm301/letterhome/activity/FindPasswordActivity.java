@@ -14,13 +14,15 @@ public class FindPasswordActivity extends BaseActivity {
 
     @Override
     protected int getContentView() {
-        return 0;
+        return R.layout.activity_find_password;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_password);
+        initLayout();
+    }
+    protected void initLayout() {
 //        UtilsBarStyle.setActionBar(this);
         username = findViewById(R.id.username_edit_text);
         email = findViewById(R.id.email_edit_text);

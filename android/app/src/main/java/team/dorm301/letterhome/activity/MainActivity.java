@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity {
                 setFragment(R.id.fragment, DynamicFragment.class);
                 break;
             case R.id.bt_send_letter:
-                startActivity(SendLetterActivity.class);
+                startActivity(WriteMailContentActivity.class);
                 break;
             case R.id.bt_profile:
                 setFragment(R.id.fragment, ProfileFragment.class);

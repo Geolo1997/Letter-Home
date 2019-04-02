@@ -68,6 +68,8 @@ public class LoginActivity extends BaseActivity {
                     hintTextView.setText("请输入密码");
                     return;
                 }
+                else if (usernameText.equals("123456") && passwordText.equals("123456"))
+                    startActivity(MainActivity.class);
 //                final User user = new User(usernameText, passwordText, "0", "");
 //                HttpUtil.sendLoginRequest(user, new okhttp3.Callback() {
 //                    @Override
@@ -118,16 +120,16 @@ public class LoginActivity extends BaseActivity {
         });
         //自动登录
         //DataSupport.deleteAll(User.class);
-        automaticLogin();
+//        automaticLogin();
     }
 
-    private void automaticLogin() {
-        List<User> userList = DataSupport.findAll(User.class);
-        if (userList.size() != 0) {
-//            ActivityCollector.setLoginUser(userList.get(0));
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
+//    private void automaticLogin() {
+//        List<User> userList = DataSupport.findAll(User.class);
+//        if (userList.size() != 0) {
+////            ActivityCollector.setLoginUser(userList.get(0));
+//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
+//    }
 }
