@@ -1,13 +1,16 @@
 package team.dorm301.letterhome.adapter;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import team.dorm301.letterhome.R;
+import team.dorm301.letterhome.activity.NewsDetailActivity;
 import team.dorm301.letterhome.base.BaseActivity;
 import team.dorm301.letterhome.base.BaseRecyclerViewAdapter;
+import team.dorm301.letterhome.consts.IntentExtra;
 import team.dorm301.letterhome.entity.News;
 
 public class NewsAdapter extends BaseRecyclerViewAdapter<News, NewsAdapter.NewsViewHolder> {
@@ -43,7 +46,9 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<News, NewsAdapter.NewsV
 
         @OnClick(R.id.ll_news_item)
         public void onViewClicked() {
-            getActivity().showToast("！！");
+            Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+            intent.putExtra(IntentExtra.NEWS, getDataList().get(getAdapterPosition()));
+            getActivity().startActivity(intent);
         }
     }
 }

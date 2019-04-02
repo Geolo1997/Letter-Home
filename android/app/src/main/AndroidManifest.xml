@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="team.dorm301.letterhome">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name=".base.BaseApplication"
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,10 +14,6 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".activity.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <activity android:name=".activity.MainActivity">
@@ -27,6 +23,8 @@
         </activity>
         <activity android:name=".activity.LoadingActivity">
             <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
@@ -34,6 +32,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".activity.NewsDetailActivity">
+
         </activity>
     </application>
 

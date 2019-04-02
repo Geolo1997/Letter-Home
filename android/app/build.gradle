@@ -47,5 +47,5 @@ dependencies {
     // retrofit-fastjson
     implementation 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
     // litepal
-    implementation 'org.litepal.android:core:1.6.1'
+    implementation 'org.litepal.android:java:3.0.0'
 }

@@ -51,11 +51,13 @@ public class LoginActivity extends BaseActivity {
                 @Override
                 public void onNext(Auth auth) {
                     Yunzhi.setToken(auth.getToken());
-                    startActivity(MainActivity.class);
+                    startActivityAndFinish(MainActivity.class);
                 }
 
                 @Override
                 public void onError(Throwable e) {
+                    // --------------test--------------
+                    startActivityAndFinish(MainActivity.class);
                     showLongToast("用户名或密码错误");
                 }
 
