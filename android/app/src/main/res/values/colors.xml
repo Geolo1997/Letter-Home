@@ -5,4 +5,5 @@
     <color name="colorRed">#fc0000</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#b7b7b7</color>
+    <color name="titleBar">#c6cab9</color>
 </resources>

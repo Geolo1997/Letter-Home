@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,17 +20,17 @@ import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.adapter.NewsAdapter;
 import team.dorm301.letterhome.base.BaseFragment;
 import team.dorm301.letterhome.entity.News;
+import team.dorm301.letterhome.ui.ToolbarLayout;
 import team.dorm301.letterhome.util.RecyclerViewUtils;
 
 public class DynamicFragment extends BaseFragment {
 
-
-    @BindView(R.id.tv_content)
-    TextView tvContent;
     @BindView(R.id.rv_news)
     RecyclerView rvNews;
     @BindView(R.id.refresh)
     SwipeRefreshLayout refresh;
+    @BindView(R.id.toolbar)
+    ToolbarLayout toolbar;
 
     private NewsAdapter newsAdapter;
 
@@ -42,6 +43,12 @@ public class DynamicFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        // 设置toolbar
+        toolbar.setTitle("新闻");
+        Button backButton = toolbar.getBtToolbarLeft();
+        backButton.setEnabled(false);
+        backButton.setText("");
+        // 设置适配器
         newsAdapter = new NewsAdapter(getBaseActivity());
         RecyclerViewUtils.setDefaultConfig(getContext(),rvNews);
         rvNews.setAdapter(newsAdapter);

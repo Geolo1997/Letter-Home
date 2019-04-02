@@ -8,6 +8,7 @@ import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.base.BaseActivity;
 import team.dorm301.letterhome.consts.IntentExtra;
 import team.dorm301.letterhome.entity.News;
+import team.dorm301.letterhome.ui.ToolbarLayout;
 import team.dorm301.letterhome.util.DateUtils;
 
 public class NewsDetailActivity extends BaseActivity {
@@ -20,6 +21,8 @@ public class NewsDetailActivity extends BaseActivity {
     TextView tvAuthor;
     @BindView(R.id.tv_content)
     TextView tvContent;
+    @BindView(R.id.toolbar)
+    ToolbarLayout toolbar;
 
     private News news;
 
@@ -31,6 +34,7 @@ public class NewsDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        toolbar.setTitle("详情");
         news = (News) getIntent().getSerializableExtra(IntentExtra.NEWS);
         loadNews();
     }

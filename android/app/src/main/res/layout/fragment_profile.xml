@@ -5,7 +5,10 @@
               android:layout_height="match_parent"
         android:background="#eeeeee">
 
-    <include layout="@layout/view_toolbar"/>
+    <team.dorm301.letterhome.ui.ToolbarLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"/>
 
     <!--个人信息块-->
     <LinearLayout
