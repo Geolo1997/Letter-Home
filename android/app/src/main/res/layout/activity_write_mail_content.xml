@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/ic_bg">
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:theme="@style/toolbar_theme"
+            android:paddingTop="24dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="写信"/>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical" android:layout_margin="30dp">
+    <EditText
+        android:id="@+id/theme_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:hint="主题"     android:textColorHint="@color/colorGray"
+        android:textSize="25sp" android:background="@drawable/write_mail_edit_text"/>
+
+    <EditText
+        android:id="@+id/content_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:padding="15dp"
+        android:hint="内容" android:textColorHint="@color/colorGray"
+        android:gravity="top"
+        android:maxLines="10"
+        android:textSize="25sp"  android:background="@drawable/write_mail_edit_text"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/send_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="120dp"
+            android:layout_marginBottom="25dp"
+            android:text="下一步"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/button_style"
+            />
+
+
+    </RelativeLayout>
+</LinearLayout>
