@@ -8,7 +8,10 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import team.dorm301.letterhome.entity.Letter;
+import team.dorm301.letterhome.entity.User;
 import team.dorm301.letterhome.repository.LetterRepository;
+
+import java.util.List;
 
 @Service
 public class LetterServiceImpl implements LetterService {
@@ -39,6 +42,12 @@ public class LetterServiceImpl implements LetterService {
         if (letter.getEmailTarget() != null && !letter.getEmailTarget().isEmpty()) {
             this.sendEmail(letter);
         }
+    }
+
+    @Override
+    public List<Letter> getLetterList() {
+        User currentLoginUser = userService.getCurrentLoginUser();
+        return currentLoginUser.getLetters();
     }
 
     private void sendEmail(Letter letter) {
