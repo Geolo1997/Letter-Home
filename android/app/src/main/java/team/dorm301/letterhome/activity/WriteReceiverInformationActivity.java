@@ -6,20 +6,31 @@ import android.support.v7.widget.SwitchCompat;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import butterknife.BindView;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.base.BaseActivity;
 
 public class WriteReceiverInformationActivity extends BaseActivity {
 
-    private EditText receiverEditText;
-    private EditText telEditText;
-    private EditText receiverAddressEditText;
-    private EditText receiveEmailEditText;
-    private Button confirmButton;
-    private SwitchCompat emailSwitch;
-    private SwitchCompat rmailSwitch;
-    private LinearLayout receiveEmailForm;
-    private LinearLayout receiveRmailForm;
+    @BindView(R.id.switch_email)
+    SwitchCompat emailSwitch;
+    @BindView(R.id.switch_rmail)
+    SwitchCompat rmailSwitch;
+    @BindView(R.id.receive_email_et)
+    EditText receiveEmailEditText;
+    @BindView(R.id.receive_email_form)
+    LinearLayout receiveEmailForm;
+    @BindView(R.id.receiver_edit_text)
+    EditText receiverEditText;
+    @BindView(R.id.tel_edit_text)
+    EditText telEditText;
+    @BindView(R.id.receiver_address_edit_text)
+    EditText receiverAddressEditText;
+    @BindView(R.id.receive_rmail_form)
+    LinearLayout receiveRmailForm;
+    @BindView(R.id.confirm_button)
+    Button confirmButton;
     private String title, content, formJudge, receiver, tel, receiverAddress, receiveEmail;
     private int sendMethod;
 
@@ -33,18 +44,6 @@ public class WriteReceiverInformationActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        UtilsBarStyle.setActionBar(this);
-
-        receiveEmailEditText = findViewById(R.id.receive_email_et);
-        receiverEditText = findViewById(R.id.receiver_edit_text);
-        telEditText = findViewById(R.id.tel_edit_text);
-        receiverAddressEditText = findViewById(R.id.receiver_address_edit_text);
-        confirmButton = findViewById(R.id.confirm_button);
-        emailSwitch = findViewById(R.id.switch_email);
-        rmailSwitch = findViewById(R.id.switch_rmail);
-        receiveEmailForm = findViewById(R.id.receive_email_form);
-        receiveRmailForm = findViewById(R.id.receive_rmail_form);
-
-
         //接收上一步的信件信息
         Intent intent = getIntent();
         title = intent.getStringExtra("title");
