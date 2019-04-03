@@ -10,7 +10,7 @@ public interface UserService {
 
     void update(User user);
 
-    void forget(String username);
+    String forget(String username);
 
     void loginWithRandomUser();
 }

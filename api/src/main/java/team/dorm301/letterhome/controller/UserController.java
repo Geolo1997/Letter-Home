@@ -28,6 +28,11 @@ public class UserController {
         userService.update(user);
     }
 
+    @PutMapping("forget")
+    public String forget(@RequestParam String username) {
+        return userService.forget(username);
+    }
+
     @GetMapping("currentLoginUser")
     @JsonView(UserJsonView.getCurrentLoginUser.class)
     public User getCurrentLoginUser() {
