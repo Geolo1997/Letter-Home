@@ -56,7 +56,7 @@ public class LoadingActivity extends BaseActivity {
     }
 
     public void checkLogInf() {
-        LogInfo logInfo = DAOService.getInstance().getCurrentLogInfo();
+        LogInfo logInfo = DAOService.getInstance().getLogInfo();
         if (logInfo != null) {
             authService.login(logInfo.getUsername(), logInfo.getPassword())
                     .subscribe(new HttpCallBack<Auth>() {
