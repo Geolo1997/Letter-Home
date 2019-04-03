@@ -8,5 +8,9 @@ public interface UserService {
 
     User getCurrentLoginUser();
 
+    void update(User user);
+
+    String forget(String username);
+
     void loginWithRandomUser();
 }

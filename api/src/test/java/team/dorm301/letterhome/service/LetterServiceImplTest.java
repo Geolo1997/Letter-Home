@@ -9,8 +9,6 @@ public class LetterServiceImplTest extends LetterhomeApplicationTests {
 
     @Autowired
     private LetterService letterService;
-    @Autowired
-    private UserService userService;
 
     @Test
     public void send() {

@@ -1,5 +1,9 @@
 package team.dorm301.letterhome.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import team.dorm301.letterhome.serialize.LetterJsonView;
+import team.dorm301.letterhome.serialize.NoneJsonView;
+
 import javax.persistence.*;
 
 /**
@@ -18,10 +22,14 @@ public class Letter {
 
     private String emailTarget;          // 邮件地址
 
+    private String subject;              // 主题
+
     @Column(length = 3000)
     private String content;              // 内容
 
     @ManyToOne
+    @JsonView({NoneJsonView.class,
+            LetterJsonView.getLetterList.class})
     private User user;                   // 寄信人
 
     public Letter() {
@@ -57,6 +65,14 @@ public class Letter {
 
     public void setEmailTarget(String emailTarget) {
         this.emailTarget = emailTarget;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public String getContent() {
