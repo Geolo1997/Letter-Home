@@ -55,6 +55,7 @@ public class LetterServiceImpl implements LetterService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(letter.getEmailTarget());
         message.setFrom(sender);
+        message.setSubject(letter.getSubject());
         message.setText(letter.getContent());
 
         logger.debug("发送邮件");
