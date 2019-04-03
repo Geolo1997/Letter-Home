@@ -1,7 +1,10 @@
 package team.dorm301.letterhome.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import team.dorm301.letterhome.config.ContextConfig;
+import team.dorm301.letterhome.serialize.NoneJsonView;
+import team.dorm301.letterhome.serialize.UserJsonView;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -26,6 +29,8 @@ public class User {
     private String name;                 // 姓名
 
     @OneToMany(mappedBy = "user")
+    @JsonView({NoneJsonView.class,
+            UserJsonView.getCurrentLoginUser.class})
     private List<Letter> letters = new ArrayList<>();        // 信件列表
 
     public User() {

@@ -1,5 +1,8 @@
 package team.dorm301.letterhome.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import team.dorm301.letterhome.serialize.NoneJsonView;
+
 import javax.persistence.*;
 
 /**
@@ -22,6 +25,7 @@ public class Letter {
     private String content;              // 内容
 
     @ManyToOne
+    @JsonView(NoneJsonView.class)
     private User user;                   // 寄信人
 
     public Letter() {

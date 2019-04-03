@@ -1,11 +1,10 @@
 package team.dorm301.letterhome.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import team.dorm301.letterhome.entity.User;
+import team.dorm301.letterhome.serialize.UserJsonView;
 import team.dorm301.letterhome.service.UserService;
 
 @RestController
@@ -22,5 +21,11 @@ public class UserController {
     @PostMapping
     public void register(@RequestBody User user) {
         userService.register(user);
+    }
+
+    @GetMapping("currentLoginUser")
+    @JsonView(UserJsonView.getCurrentLoginUser.class)
+    public User getCurrentLoginUser() {
+        return userService.getCurrentLoginUser();
     }
 }
