@@ -11,6 +11,7 @@ public class Letter implements Serializable {
 
     private Long id;                     // 主键
     private String recipient;            // 收件人
+    private String telephone;            // 手机
     private String target;               // 目标地址
     private String emailTarget;          // 邮件地址
     private String subject;              // 主题
@@ -35,6 +36,14 @@ public class Letter implements Serializable {
 
     public void setRecipient(String recipient) {
         this.recipient = recipient;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getTelephone() {
+        return telephone;
     }
 
     public void setSubject(String subject) {
