@@ -59,6 +59,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void update(User user) {
+        User currentLoginUser = this.getCurrentLoginUser();
+        currentLoginUser.setName(user.getName());
+        currentLoginUser.setSex(user.getSex());
+        currentLoginUser.setTelephone(user.getTelephone());
+        userRepository.save(currentLoginUser);
+    }
+
+    @Override
     public void loginWithRandomUser() {
         User user = new User();
         user.setName(CommonService.getRandomStringByLength(10));

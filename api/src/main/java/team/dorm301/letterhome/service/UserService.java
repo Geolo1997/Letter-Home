@@ -8,5 +8,7 @@ public interface UserService {
 
     User getCurrentLoginUser();
 
+    void update(User user);
+
     void loginWithRandomUser();
 }

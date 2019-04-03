@@ -23,6 +23,11 @@ public class UserController {
         userService.register(user);
     }
 
+    @PutMapping
+    public void updateCurrentLoginUser(@RequestBody User user) {
+        userService.update(user);
+    }
+
     @GetMapping("currentLoginUser")
     @JsonView(UserJsonView.getCurrentLoginUser.class)
     public User getCurrentLoginUser() {

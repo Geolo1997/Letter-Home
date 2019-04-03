@@ -28,6 +28,10 @@ public class User {
 
     private String name;                 // 姓名
 
+    private Boolean sex;                 // 性别
+
+    private String telephone;            // 手机号
+
     @OneToMany(mappedBy = "user")
     @JsonView({NoneJsonView.class,
             UserJsonView.getCurrentLoginUser.class})
@@ -66,6 +70,22 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Boolean getSex() {
+        return sex;
+    }
+
+    public void setSex(Boolean sex) {
+        this.sex = sex;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public List<Letter> getLetters() {
