@@ -19,11 +19,13 @@ public class UserServiceImpl implements UserService {
 
     private User currentLoginUser;
 
+    private final MailService mailService;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
     @Autowired
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository) {
+    public UserServiceImpl(MailService mailService, PasswordEncoder passwordEncoder, UserRepository userRepository) {
+        this.mailService = mailService;
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
     }
@@ -56,6 +58,24 @@ public class UserServiceImpl implements UserService {
         }
 
         return user;
+    }
+
+    @Override
+    public void update(User user) {
+        User currentLoginUser = this.getCurrentLoginUser();
+        currentLoginUser.setName(user.getName());
+        currentLoginUser.setSex(user.getSex());
+        currentLoginUser.setTelephone(user.getTelephone());
+        currentLoginUser.setEmail(user.getEmail());
+        userRepository.save(currentLoginUser);
+    }
+
+    @Override
+    public String forget(String username) {
+        User user = userRepository.findUserByUsername(username);
+        String code = CommonService.getRandomStringByLength(6);
+        mailService.sendEMail(user.getEmail(), "重置密码", "您的验证码为: " + code);
+        return code;
     }
 
     @Override
