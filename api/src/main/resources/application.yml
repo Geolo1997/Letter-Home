@@ -2,6 +2,11 @@ spring:
   h2:
     console:
       enabled: true
+  mail:
+    host: smtp.163.com
+    username: zhangxishuo1998@163.com
+    password: letter301
+    default-encoding: UTF-8
 
 server:
   port: 8888
