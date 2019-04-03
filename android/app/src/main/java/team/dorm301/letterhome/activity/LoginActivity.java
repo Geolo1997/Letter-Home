@@ -33,36 +33,39 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         this.authService = Yunzhi.getBean(AuthService.class);
     }
-
     @OnClick(R.id.login_button)
     public void onViewClicked() {
-        Log.d(TAG, "获取用户名和密码");
-        String username = this.usernameEditText.getText().toString();
-        String password = this.passwordEditText.getText().toString();
-
-        Log.d(TAG, "请求登录");
-        this.authService.login(username, password)
-            .subscribe(new Observer<Auth>() {
-                @Override
-                public void onSubscribe(Disposable d) {
-
-                }
-
-                @Override
-                public void onNext(Auth auth) {
-                    Yunzhi.setToken(auth.getToken());
-                    startActivity(MainActivity.class);
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    showLongToast("用户名或密码错误");
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            });
+        startActivity(MainActivity.class);
     }
+//    @OnClick(R.id.login_button)
+//    public void onViewClicked() {
+//        Log.d(TAG, "获取用户名和密码");
+//        String username = this.usernameEditText.getText().toString();
+//        String password = this.passwordEditText.getText().toString();
+//
+//        Log.d(TAG, "请求登录");
+//        this.authService.login(username, password)
+//            .subscribe(new Observer<Auth>() {
+//                @Override
+//                public void onSubscribe(Disposable d) {
+//
+//                }
+//
+//                @Override
+//                public void onNext(Auth auth) {
+//                    Yunzhi.setToken(auth.getToken());
+//                    startActivity(MainActivity.class);
+//                }
+//
+//                @Override
+//                public void onError(Throwable e) {
+//                    showLongToast("用户名或密码错误");
+//                }
+//
+//                @Override
+//                public void onComplete() {
+//
+//                }
+//            });
+//    }
 }
