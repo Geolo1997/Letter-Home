@@ -2,6 +2,7 @@ package team.dorm301.letterhome.dao;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import team.dorm301.letterhome.App;
 import team.dorm301.letterhome.entity.LogInfo;
 
@@ -12,18 +13,17 @@ public class LogInfoDaoImpl implements LogInfoDao {
     private SharedPreferences.Editor editor;
 
     public LogInfoDaoImpl() {
-        sharedPreferences = App.getContext().getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(App.getContext());
     }
 
     @Override
     public void save(LogInfo logInfo) {
         editor = sharedPreferences.edit();
-        editor.clear();
         editor.putString("username", logInfo.getUsername());
         editor.putString("password", logInfo.getPassword());
         editor.putBoolean("autoLogin", logInfo.isAutoLogin());
         editor.putBoolean("savePassword", logInfo.isSavePassword());
-        editor.commit();
+        editor.apply();
     }
 
     @Override
@@ -33,6 +33,6 @@ public class LogInfoDaoImpl implements LogInfoDao {
         logInfo.setPassword(sharedPreferences.getString("password", ""));
         logInfo.setAutoLogin(sharedPreferences.getBoolean("autoLogin", false));
         logInfo.setSavePassword(sharedPreferences.getBoolean("savePassword", false));
-        return null;
+        return logInfo;
     }
 }
