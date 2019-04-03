@@ -68,6 +68,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void forget(String username) {
+        User user = userRepository.findUserByUsername(username);
+
+    }
+
+    @Override
     public void loginWithRandomUser() {
         User user = new User();
         user.setName(CommonService.getRandomStringByLength(10));

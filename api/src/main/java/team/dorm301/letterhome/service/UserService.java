@@ -10,5 +10,7 @@ public interface UserService {
 
     void update(User user);
 
+    void forget(String username);
+
     void loginWithRandomUser();
 }
