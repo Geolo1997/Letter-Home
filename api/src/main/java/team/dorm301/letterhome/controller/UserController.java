@@ -33,6 +33,11 @@ public class UserController {
         return userService.forget(username);
     }
 
+    @PutMapping("password")
+    public void reset(@RequestBody User user) {
+        userService.reset(user.getUsername(), user.getPassword());
+    }
+
     @GetMapping("currentLoginUser")
     @JsonView(UserJsonView.getCurrentLoginUser.class)
     public User getCurrentLoginUser() {

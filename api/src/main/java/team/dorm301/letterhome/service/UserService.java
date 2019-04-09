@@ -12,5 +12,7 @@ public interface UserService {
 
     String forget(String username);
 
+    void reset(String username, String password);
+
     void loginWithRandomUser();
 }

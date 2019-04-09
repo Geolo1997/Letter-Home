@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService {
         if (persistUser != null) {
             throw new UsernameDuplicateException("用户名已被占用");
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
@@ -76,6 +75,13 @@ public class UserServiceImpl implements UserService {
         String code = CommonService.getRandomStringByLength(6);
         mailService.sendEMail(user.getEmail(), "重置密码", "您的验证码为: " + code);
         return code;
+    }
+
+    @Override
+    public void reset(String username, String password) {
+        User user = userRepository.findUserByUsername(username);
+        user.setPassword(passwordEncoder.encode(password));
+        userRepository.save(user);
     }
 
     @Override
