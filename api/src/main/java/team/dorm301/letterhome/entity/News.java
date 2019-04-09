@@ -1,20 +1,20 @@
 package team.dorm301.letterhome.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
 public class News {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String author;
 
     private String title;
 
+    @Column(length = 5000)
     private String content;
 
     private String imgUrl;
@@ -25,11 +25,11 @@ public class News {
     public News() {
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
