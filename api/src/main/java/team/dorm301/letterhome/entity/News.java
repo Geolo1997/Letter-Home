@@ -1,17 +1,15 @@
 package team.dorm301.letterhome.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.Calendar;
 
 @Entity
 public class News {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String author;
 
@@ -21,16 +19,17 @@ public class News {
 
     private String imgUrl;
 
+    @Transient
     private Calendar publishTime;
 
     public News() {
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
