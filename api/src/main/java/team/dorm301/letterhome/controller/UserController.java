@@ -1,8 +1,10 @@
 package team.dorm301.letterhome.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.mengyunzhi.core.service.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import team.dorm301.letterhome.entity.User;
 import team.dorm301.letterhome.serialize.UserJsonView;
 import team.dorm301.letterhome.service.UserService;
@@ -36,6 +38,11 @@ public class UserController {
     @PutMapping("password")
     public void reset(@RequestBody User user) {
         userService.reset(user.getUsername(), user.getPassword());
+    }
+
+    @PutMapping("avatar")
+    public void uploadAvatar(@RequestParam MultipartFile file) throws Exception {
+
     }
 
     @GetMapping("currentLoginUser")

@@ -32,6 +32,8 @@ public class User {
 
     private Boolean sex;                 // 性别
 
+    private String avatar;               // 头像
+
     private String telephone;            // 手机号
 
     @OneToMany(mappedBy = "user")
@@ -88,6 +90,14 @@ public class User {
 
     public void setSex(Boolean sex) {
         this.sex = sex;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getTelephone() {

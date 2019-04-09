@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import team.dorm301.letterhome.entity.User;
 import team.dorm301.letterhome.exception.UsernameDuplicateException;
 import team.dorm301.letterhome.repository.UserRepository;
@@ -82,6 +83,12 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findUserByUsername(username);
         user.setPassword(passwordEncoder.encode(password));
         userRepository.save(user);
+    }
+
+    @Override
+    public void uploadAvatar(MultipartFile file) throws Exception {
+        String filename = CommonService.encrypt(file, "SHA-1");
+        User user = this.getCurrentLoginUser();
     }
 
     @Override
