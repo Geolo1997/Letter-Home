@@ -47,10 +47,12 @@ dependencies {
     // retrofit-fastjson
     implementation 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
     // litepal
-    implementation 'org.litepal.android:core:1.6.1'
-
+    implementation 'org.litepal.android:java:3.0.0'
+    // 图像框架glide
     implementation 'com.github.bumptech.glide:glide:3.7.0'
-
     implementation 'jp.wasabeef:glide-transformations:2.0.1'
+
+
+
 
 }

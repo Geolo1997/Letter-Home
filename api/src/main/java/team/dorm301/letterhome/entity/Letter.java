@@ -16,6 +16,8 @@ public class Letter {
 
     private String target;               // 目标地址
 
+    private String emailTarget;          // 邮件地址
+
     @Column(length = 3000)
     private String content;              // 内容
 
@@ -47,6 +49,14 @@ public class Letter {
 
     public void setTarget(String target) {
         this.target = target;
+    }
+
+    public String getEmailTarget() {
+        return emailTarget;
+    }
+
+    public void setEmailTarget(String emailTarget) {
+        this.emailTarget = emailTarget;
     }
 
     public String getContent() {

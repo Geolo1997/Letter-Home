@@ -1,5 +1,6 @@
 package team.dorm301.letterhome.service;
 
+import com.mengyunzhi.core.service.CommonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import team.dorm301.letterhome.repository.UserRepository;
 public class UserServiceImpl implements UserService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
+    private User currentLoginUser;
 
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
@@ -37,6 +40,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getCurrentLoginUser() {
+        if (currentLoginUser != null) {
+            return currentLoginUser;
+        }
+
         logger.debug("初始化用户");
         User user = null;
 
@@ -49,5 +56,12 @@ public class UserServiceImpl implements UserService {
         }
 
         return user;
+    }
+
+    @Override
+    public void loginWithRandomUser() {
+        User user = new User();
+        user.setName(CommonService.getRandomStringByLength(10));
+        this.currentLoginUser = user;
     }
 }

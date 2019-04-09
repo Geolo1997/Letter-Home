@@ -4,7 +4,10 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+    <team.dorm301.letterhome.ui.ToolbarLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"/>
 
 <!--<磨砂头部实现> -->
     <RelativeLayout

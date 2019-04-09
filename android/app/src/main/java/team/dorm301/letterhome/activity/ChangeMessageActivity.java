@@ -6,10 +6,15 @@ import android.widget.TextView;
 import butterknife.BindView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.base.BaseActivity;
+import team.dorm301.letterhome.entity.User;
+import team.dorm301.letterhome.http.HttpClient;
+import team.dorm301.letterhome.request.UserRequest;
 
 public class ChangeMessageActivity extends BaseActivity {
 
@@ -39,5 +44,29 @@ public class ChangeMessageActivity extends BaseActivity {
                 .bitmapTransform(new CropCircleTransformation(this))
                 .into(hHead);
 
+
+      UserRequest userRequest =  HttpClient.request(UserRequest.class);
+              userRequest  .getProfile()
+                .subscribe(new Observer<User>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(User user) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

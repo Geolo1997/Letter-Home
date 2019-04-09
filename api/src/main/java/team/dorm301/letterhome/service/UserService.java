@@ -7,4 +7,6 @@ public interface UserService {
     void register(User user);
 
     User getCurrentLoginUser();
+
+    void loginWithRandomUser();
 }

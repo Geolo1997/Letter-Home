@@ -25,4 +25,6 @@
     <string name="profile">我的</string>
     <string name="send_letter">发信</string>
     <string name="toolbar">工具栏</string>
+    <string name="back">返回</string>
+    <string name="option">选项</string>
 </resources>

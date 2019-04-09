@@ -22,14 +22,18 @@ public class DAOService {
         }
         return instance;
     }
+    private LogInfoDao logInfoDao = new LogInfoDaoImpl();
 
     /**
      * 获取当前登录用户
      *
      * @return
      */
-    public LogInfo getCurrentLogInfo() {
-        //TODO
-        return null;
+    public LogInfo getLogInfo() {
+        return logInfoDao.getLogInfo();
+    }
+
+    public void saveLogInfo(LogInfo logInfo) {
+        logInfoDao.save(logInfo);
     }
 }
