@@ -15,7 +15,7 @@ public interface UserService {
 
     void reset(String username, String password);
 
-    void uploadAvatar(MultipartFile file) throws Exception;
+    void uploadAvatar(MultipartFile avatar) throws Exception;
 
     void loginWithRandomUser();
 }

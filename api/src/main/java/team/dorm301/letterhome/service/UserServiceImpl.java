@@ -4,6 +4,7 @@ import com.mengyunzhi.core.service.CommonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,10 +14,18 @@ import team.dorm301.letterhome.entity.User;
 import team.dorm301.letterhome.exception.UsernameDuplicateException;
 import team.dorm301.letterhome.repository.UserRepository;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
 @Service
 public class UserServiceImpl implements UserService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
+    @Value("${attachment.image.directory}")
+    private String imageDirectory;
 
     private User currentLoginUser;
 
@@ -86,9 +95,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void uploadAvatar(MultipartFile file) throws Exception {
-        String filename = CommonService.encrypt(file, "SHA-1");
+    public void uploadAvatar(MultipartFile avatar) throws Exception {
+        String fileName = avatar.getOriginalFilename();
+        String ext = fileName != null ? fileName.substring(fileName.lastIndexOf(".") + 1) : null;
+        String sha1 = CommonService.encrypt(avatar, "SHA-1");
+        String avatarFileName = sha1 + "." + ext;
+        Files.copy(avatar.getInputStream(), this.getPathByImageSaveName(avatarFileName), StandardCopyOption.REPLACE_EXISTING);
         User user = this.getCurrentLoginUser();
+        user.setAvatar(avatarFileName);
+        userRepository.save(user);
+    }
+
+    private Path getPathByImageSaveName(String name) {
+        return this.getImagePath().resolve(name);
+    }
+
+    private Path getImagePath() {
+        return Paths.get(this.getImageDirectory());
+    }
+
+    private String getImageDirectory() {
+        return imageDirectory;
     }
 
     @Override

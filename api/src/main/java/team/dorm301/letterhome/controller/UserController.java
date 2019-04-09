@@ -1,7 +1,6 @@
 package team.dorm301.letterhome.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.mengyunzhi.core.service.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,8 +40,8 @@ public class UserController {
     }
 
     @PutMapping("avatar")
-    public void uploadAvatar(@RequestParam MultipartFile file) throws Exception {
-
+    public void uploadAvatar(@RequestParam MultipartFile avatar) throws Exception {
+        userService.uploadAvatar(avatar);
     }
 
     @GetMapping("currentLoginUser")
