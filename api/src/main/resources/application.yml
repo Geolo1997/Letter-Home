@@ -8,5 +8,10 @@ spring:
     password: letter301
     default-encoding: UTF-8
 
+attachment:
+  image:
+    #  附件上传路径
+    directory: attachment/image
+
 server:
   port: 8888

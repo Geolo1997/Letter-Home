@@ -10,6 +10,9 @@ import team.dorm301.letterhome.entity.Auth;
  */
 public interface AuthRequest {
 
-    @GET("/auth/login")
+    @GET("auth/login")
     Observable<Auth> login(@Header("Authorization") String basicAuth);
+
+    @GET("auth/logout")
+    Observable<Void> logout();
 }

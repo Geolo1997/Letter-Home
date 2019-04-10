@@ -1,36 +1,23 @@
 package team.dorm301.letterhome.entity;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import team.dorm301.letterhome.serialize.LetterJsonView;
-import team.dorm301.letterhome.serialize.NoneJsonView;
 
-import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 信件实体
  */
-@Entity
-public class Letter {
+public class Letter implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;                     // 主键
-
     private String recipient;            // 收件人
-
+    private String telephone;            // 手机
     private String target;               // 目标地址
-
     private String emailTarget;          // 邮件地址
-
     private String subject;              // 主题
-
-    @Column(length = 3000)
     private String content;              // 内容
-
-    @ManyToOne
-    @JsonView({NoneJsonView.class,
-            LetterJsonView.getLetterList.class})
     private User user;                   // 寄信人
+    private Date sendTime;
 
     public Letter() {
     }
@@ -51,6 +38,22 @@ public class Letter {
         this.recipient = recipient;
     }
 
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
     public String getTarget() {
         return target;
     }
@@ -67,14 +70,6 @@ public class Letter {
         this.emailTarget = emailTarget;
     }
 
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
     public String getContent() {
         return content;
     }
@@ -89,5 +84,13 @@ public class Letter {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Date getSendTime() {
+        return sendTime;
+    }
+
+    public void setSendTime(Date sendTime) {
+        this.sendTime = sendTime;
     }
 }

@@ -19,6 +19,7 @@ import team.dorm301.letterhome.permission.ActivityCallback;
 import team.dorm301.letterhome.permission.ActivityRequestCode;
 import team.dorm301.letterhome.permission.PermissionCallback;
 import team.dorm301.letterhome.permission.PermissionRequestCode;
+import team.dorm301.letterhome.util.ActivityCollector;
 
 import pers.geolo.util.SingletonHolder;
 
@@ -34,10 +35,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActivityCollector.getInstance().add(this);
         setContentView(getContentView());
         ButterKnife.bind(this);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityCollector.getInstance().remove(this);
+    }
 
     public void addActivityRequest(ActivityRequestCode requestCode, ActivityCallback callback) {
         activityCallbackMap.put(requestCode, callback);
