@@ -19,11 +19,15 @@ public class LogInfoDaoImpl implements LogInfoDao {
     @Override
     public void save(LogInfo logInfo) {
         editor = sharedPreferences.edit();
-        editor.putString("username", logInfo.getUsername());
-        editor.putString("password", logInfo.getPassword());
-        editor.putBoolean("autoLogin", logInfo.isAutoLogin());
-        editor.putBoolean("savePassword", logInfo.isSavePassword());
-        editor.apply();
+        if (logInfo == null) {
+            editor.clear();
+        } else {
+            editor.putString("username", logInfo.getUsername());
+            editor.putString("password", logInfo.getPassword());
+            editor.putBoolean("autoLogin", logInfo.isAutoLogin());
+            editor.putBoolean("savePassword", logInfo.isSavePassword());
+            editor.apply();
+        }
     }
 
     @Override

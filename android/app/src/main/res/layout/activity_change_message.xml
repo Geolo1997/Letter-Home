@@ -95,6 +95,7 @@
                     android:layout_gravity="center"
                     android:src="@drawable/change_sex"/>
             <CheckBox
+                    android:id="@+id/cb_choose_man"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="男"
@@ -102,6 +103,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_gravity="center"/>
             <CheckBox
+                    android:id="@+id/cb_choose_woman"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="女"
@@ -154,7 +156,12 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="6">
+                android:layout_weight="2">
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bt_confim"
+            />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

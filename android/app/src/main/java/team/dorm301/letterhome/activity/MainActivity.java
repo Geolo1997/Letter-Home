@@ -36,8 +36,11 @@ public class MainActivity extends BaseActivity {
                 startActivity(SendLetterActivity.class);
                 break;
             case R.id.bt_profile:
+                //startActivity(ProfileActivity.class);
                 setFragment(R.id.fragment, ProfileFragment.class);
                 break;
         }
     }
+
+
 }
