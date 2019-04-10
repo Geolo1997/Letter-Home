@@ -13,6 +13,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 // 使用Basic认证方式进行验证进行验证
                 .httpBasic()
+                // 添加排除路由
+                .and().authorizeRequests().antMatchers("/user/forget", "/user/password", "/user").permitAll()
                 // 要求SpringSecurity对后台的任何请求进行认证保护
                 .and().authorizeRequests().anyRequest().authenticated()
                 // 关闭Security的Session，使用Spring Session
