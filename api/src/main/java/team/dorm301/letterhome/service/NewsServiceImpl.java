@@ -29,7 +29,7 @@ public class NewsServiceImpl implements NewsService {
         }
         List<News> newsList = new ArrayList<>();
         for (int i = 0; i < size; i ++) {
-            int index = Math.toIntExact(CommonService.getRandomUniqueId(0L, (long) length));
+            int index = Math.toIntExact(CommonService.getRandomUniqueId(0L, (long) length - 1));
             News news = primaryNewsList.get(index);
             Calendar currentTime = Calendar.getInstance();
             currentTime.add(Calendar.MINUTE, -CommonService.getRandomNumberInts(0, 15));
