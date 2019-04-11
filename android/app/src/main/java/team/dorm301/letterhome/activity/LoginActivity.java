@@ -75,10 +75,6 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        // --------------test--------------
-                        startActivityAndFinish(MainActivity.class);
-                        DAOService.getInstance().saveLogInfo(logInfo);
-                        // -------------end test-----------
                         showLongToast("用户名或密码错误");
                     }
 
@@ -87,5 +83,10 @@ public class LoginActivity extends BaseActivity {
 
                     }
                 });
+    }
+
+    @OnClick(R.id.bt_register)
+    public void toRegisterView() {
+        startActivity(RegisterActivity.class);
     }
 }

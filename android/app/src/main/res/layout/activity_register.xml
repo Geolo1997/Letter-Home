@@ -32,11 +32,6 @@
             android:layout_height="wrap_content"
             android:hint="输入密码"/>
         <EditText
-            android:id="@+id/tel_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="输入手机号"/>
-        <EditText
                 android:id="@+id/email_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

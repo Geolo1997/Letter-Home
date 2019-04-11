@@ -55,7 +55,7 @@ public class InboxActivity extends BaseActivity {
 
         letterService = Yunzhi.getBean(LetterService.class);
 
-        testLoadLetterList();
+        loadLetterList();
     }
 
     private void loadLetterList() {

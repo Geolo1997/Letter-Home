@@ -8,7 +8,7 @@
     <team.dorm301.letterhome.ui.ToolbarLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"/>
+        android:layout_height="60dp"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refresh"
