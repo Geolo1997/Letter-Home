@@ -52,7 +52,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'jp.wasabeef:glide-transformations:2.0.1'
 
-
+    // ListItemView
+    implementation 'com.lucasurbas:listitemview:1.1.1'
 
 
 }

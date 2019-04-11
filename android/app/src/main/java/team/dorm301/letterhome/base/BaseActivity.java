@@ -11,10 +11,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import java.util.HashMap;
 import java.util.Map;
+import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.permission.ActivityCallback;
 import team.dorm301.letterhome.permission.ActivityRequestCode;
 import team.dorm301.letterhome.permission.PermissionCallback;
@@ -30,6 +34,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     private final Map<ActivityRequestCode, ActivityCallback> activityCallbackMap = new HashMap<>();
     private final Map<PermissionRequestCode, PermissionCallback> permissionCallbackMap = new HashMap<>();
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.toolbar_title)
+    TextView toolbarTitle;
+
     protected abstract int getContentView();
 
     @Override
@@ -38,6 +47,20 @@ public abstract class BaseActivity extends AppCompatActivity {
         ActivityCollector.getInstance().add(this);
         setContentView(getContentView());
         ButterKnife.bind(this);
+        initToolBar();
+        setSupportActionBar(toolbar);
+    }
+
+    protected void initToolBar() {
+        toolbar.setTitle("");
+    }
+
+    public void setToolbarTitle(String toolbarTitle) {
+        this.toolbarTitle.setText(toolbarTitle);
+    }
+
+    public Toolbar getToolbar() {
+        return toolbar;
     }
 
     @Override

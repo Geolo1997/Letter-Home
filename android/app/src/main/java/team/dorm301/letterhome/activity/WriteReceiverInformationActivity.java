@@ -15,6 +15,9 @@ import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import java.util.Date;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.base.BaseActivity;
 import team.dorm301.letterhome.config.Yunzhi;
@@ -139,24 +142,15 @@ public class WriteReceiverInformationActivity extends BaseActivity {
             onSendLetterSuccess();
             // -----------end test--------
             letterService.sendLetter(letter)
-                    .subscribe(new Observer<Void>() {
+                    .enqueue(new Callback<Void>() {
                         @Override
-                        public void onSubscribe(Disposable d) {
+                        public void onResponse(Call<Void> call, Response<Void> response) {
 
-                        }
-
-                        @Override
-                        public void onNext(Void aVoid) {
                             onSendLetterSuccess();
                         }
 
                         @Override
-                        public void onError(Throwable e) {
-                            showToast("网络错误");
-                        }
-
-                        @Override
-                        public void onComplete() {
+                        public void onFailure(Call<Void> call, Throwable t) {
 
                         }
                     });

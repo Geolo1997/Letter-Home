@@ -29,8 +29,6 @@ public class DynamicFragment extends BaseFragment {
     RecyclerView rvNews;
     @BindView(R.id.refresh)
     SwipeRefreshLayout refresh;
-    @BindView(R.id.toolbar)
-    ToolbarLayout toolbar;
 
     private NewsAdapter newsAdapter;
 
@@ -43,11 +41,7 @@ public class DynamicFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        // 设置toolbar
-        toolbar.setTitle("新闻");
-        Button backButton = toolbar.getBtToolbarLeft();
-        backButton.setEnabled(false);
-        backButton.setText("");
+        getBaseActivity().setToolbarTitle("资讯");
         // 设置适配器
         newsAdapter = new NewsAdapter(getBaseActivity());
         RecyclerViewUtils.setDefaultConfig(getContext(),rvNews);

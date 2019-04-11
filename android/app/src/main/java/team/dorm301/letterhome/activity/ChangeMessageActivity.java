@@ -45,8 +45,8 @@ public class ChangeMessageActivity extends BaseActivity {
                 .into(hHead);
 
 
-      UserRequest userRequest =  HttpClient.request(UserRequest.class);
-              userRequest  .getProfile()
+        UserRequest userRequest = HttpClient.request(UserRequest.class);
+        userRequest.getMyProfile()
                 .subscribe(new Observer<User>() {
                     @Override
                     public void onSubscribe(Disposable d) {

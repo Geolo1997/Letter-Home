@@ -16,8 +16,6 @@ import team.dorm301.letterhome.ui.ToolbarLayout;
 
 public class ProfileFragment extends BaseFragment {
 
-    @BindView(R.id.toolbar)
-    ToolbarLayout toolbar;
     @BindView(R.id.tv_profile)
     TextView tvProfile;
 
@@ -30,10 +28,7 @@ public class ProfileFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        toolbar.setTitle("我的");
-        Button backButton = toolbar.getBtToolbarLeft();
-        backButton.setEnabled(false);
-        backButton.setText("");
+        getBaseActivity().setToolbarTitle("我的");
         return rootView;
     }
 

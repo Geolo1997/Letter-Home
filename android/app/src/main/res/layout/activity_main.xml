@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
+    <include layout="@layout/layout_tool_bar"/>
     <LinearLayout
         android:id="@+id/fragment"
         android:layout_width="match_parent"

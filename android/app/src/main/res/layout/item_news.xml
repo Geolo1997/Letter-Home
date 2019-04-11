@@ -5,8 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorGray"
-    android:layout_marginBottom="20dp">
+    android:layout_marginBottom="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/tv_title"
@@ -17,4 +17,15 @@
         android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <com.lucasurbas.listitemview.ListItemView
+        android:id="@+id/list_item_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:liv_title="title"
+        app:liv_subtitle="subtitle"
+        app:liv_icon="@drawable/ic_mailbox2"
+        app:liv_menu="@menu/multiple_action_menu"
+        app:liv_multiline="false"
+        app:liv_displayMode="avatar"/>
 </LinearLayout>

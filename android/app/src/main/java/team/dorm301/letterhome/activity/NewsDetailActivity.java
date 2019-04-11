@@ -2,8 +2,10 @@ package team.dorm301.letterhome.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import butterknife.BindView;
+import java.util.Date;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.base.BaseActivity;
 import team.dorm301.letterhome.consts.IntentExtra;
@@ -21,8 +23,6 @@ public class NewsDetailActivity extends BaseActivity {
     TextView tvAuthor;
     @BindView(R.id.tv_content)
     TextView tvContent;
-    @BindView(R.id.toolbar)
-    ToolbarLayout toolbar;
 
     private News news;
 
@@ -34,9 +34,15 @@ public class NewsDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        toolbar.setTitle("详情");
         news = (News) getIntent().getSerializableExtra(IntentExtra.NEWS);
+        news = new News(1, new Date(), "sss", "ssssss", "dfdsfsd");
         loadNews();
+    }
+
+    @Override
+    protected void initToolBar() {
+        super.initToolBar();
+        setToolbarTitle("资讯详情");
     }
 
     private void loadNews() {
