@@ -27,8 +27,8 @@ public class ProfileActivity extends BaseActivity {
     ImageView hHead;
     @BindView(R.id.user_line)
     ImageView userLine;
-    @BindView(R.id.toolbar)
-    ToolbarLayout toolbar;
+//    @BindView(R.id.toolbar)
+//    ToolbarLayout toolbar;
     @BindView(R.id.user_name)
     TextView userName;
     @BindView(R.id.user_val)
