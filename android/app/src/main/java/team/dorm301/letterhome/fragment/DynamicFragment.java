@@ -13,13 +13,21 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.adapter.NewsAdapter;
 import team.dorm301.letterhome.base.BaseFragment;
 import team.dorm301.letterhome.entity.News;
+import team.dorm301.letterhome.http.HttpClient;
+import team.dorm301.letterhome.request.NewsRequest;
 import team.dorm301.letterhome.ui.ToolbarLayout;
 import team.dorm301.letterhome.util.RecyclerViewUtils;
 
@@ -44,31 +52,46 @@ public class DynamicFragment extends BaseFragment {
         getBaseActivity().setToolbarTitle("资讯");
         // 设置适配器
         newsAdapter = new NewsAdapter(getBaseActivity());
-        RecyclerViewUtils.setDefaultConfig(getContext(),rvNews);
+        RecyclerViewUtils.setDefaultConfig(getContext(), rvNews);
         rvNews.setAdapter(newsAdapter);
         // 刷新事件监听
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                newsAdapter.setDataList(getDataList());
+                update();
                 refresh.setRefreshing(false);
             }
         });
         // 设置数据
-        newsAdapter.setDataList(getDataList());
+        update();
         return rootView;
     }
 
-    private List<News> getDataList() {
-        List<News> newsList = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            News news = new News();
-            news.setTitle("标题" + i + "....");
-            news.setAuthor("作者" + i);
-            news.setPublishTime(new Date());
-            news.setContent("内容内容" + i + "。。。。。。。内容内容。。。。。。。内容内容。。。。。。。内容内容。。。。。。。内容内容。。。。。。。内容内容。。。。。。。");
-            newsList.add(news);
-        }
-        return newsList;
+    private void update() {
+        HttpClient.request(NewsRequest.class)
+                .getNewsList()
+                .subscribeOn(Schedulers.io())                   // 在IO线程发起网络请求
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<News>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(List<News> news) {
+                        newsAdapter.setDataList(news);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        getBaseActivity().showToast("网络错误");
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

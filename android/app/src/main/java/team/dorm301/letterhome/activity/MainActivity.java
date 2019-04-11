@@ -1,6 +1,7 @@
 package team.dorm301.letterhome.activity;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import butterknife.BindView;
@@ -14,6 +15,8 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.bt_dynamic)
     Button selectedButton;
+//    @BindView(R.id.tb)
+//    Toolbar tb;
 
     @Override
     protected int getContentView() {
@@ -24,6 +27,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         onViewClicked(selectedButton);
+//        setSupportActionBar(tb);
     }
 
     @OnClick({R.id.bt_dynamic, R.id.bt_send_letter, R.id.bt_profile})
@@ -36,8 +40,11 @@ public class MainActivity extends BaseActivity {
                 startActivity(SendLetterActivity.class);
                 break;
             case R.id.bt_profile:
+                //startActivity(ProfileActivity.class);
                 setFragment(R.id.fragment, ProfileFragment.class);
                 break;
         }
     }
+
+
 }

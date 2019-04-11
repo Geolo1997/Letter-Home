@@ -21,4 +21,7 @@ public interface UserRequest {
 
     @PUT("user/forget")
     Observable<String> forgetPassword(@Query("username") String username);
+
+
+
 }
