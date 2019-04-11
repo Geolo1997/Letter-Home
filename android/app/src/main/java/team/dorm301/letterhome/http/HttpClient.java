@@ -23,7 +23,7 @@ public class HttpClient {
         private static final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Yunzhi.getApi())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(FastJsonConverterFactory.create())
+//                .addConverterFactory(FastJsonConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(OkHttpClientBuilder.build())
                 .build();

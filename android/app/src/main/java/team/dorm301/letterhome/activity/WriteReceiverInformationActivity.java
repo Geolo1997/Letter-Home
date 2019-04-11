@@ -3,6 +3,7 @@ package team.dorm301.letterhome.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.OnClick;
+import com.spark.submitbutton.SubmitButton;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import java.util.Date;
@@ -48,7 +50,7 @@ public class WriteReceiverInformationActivity extends BaseActivity {
     @BindView(R.id.receive_rmail_form)
     LinearLayout receiveRmailForm;
     @BindView(R.id.confirm_button)
-    Button confirmButton;
+    SubmitButton confirmButton;
 
     private Letter letter = new Letter();
 
@@ -62,8 +64,11 @@ public class WriteReceiverInformationActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setToolbarTitle("发信");
+        getToolbar().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
+
         letterService = Yunzhi.getBean(LetterService.class);
-//        UtilsBarStyle.setActionBar(this);
+        setToolbarTitle("收信人信息");
         User user = new User();
         user.setUsername(DAOService.getInstance().getLogInfo().getUsername());
         letter.setUser(user);
@@ -138,9 +143,6 @@ public class WriteReceiverInformationActivity extends BaseActivity {
         String formJudge = formJudge();
         if ("formGood".equals(formJudge)) {
             letter.setSendTime(new Date());
-            // -----------test------------
-            onSendLetterSuccess();
-            // -----------end test--------
             letterService.sendLetter(letter)
                     .enqueue(new Callback<Void>() {
                         @Override

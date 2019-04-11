@@ -6,4 +6,6 @@
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#b7b7b7</color>
     <color name="titleBar">#c6cab9</color>
+    <color name="green">#14f500</color>
+    <color name="profile">#dac364</color>
 </resources>

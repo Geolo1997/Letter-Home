@@ -22,8 +22,6 @@ import team.dorm301.letterhome.util.RecyclerViewUtils;
 
 public class InboxActivity extends BaseActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.inbox_recycler_view)
     RecyclerView inboxRecyclerView;
     @BindView(R.id.swipe_refresh)
@@ -40,11 +38,11 @@ public class InboxActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setToolbarTitle("发件箱");
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                testLoadLetterList();
+                loadLetterList();
             }
         });
 

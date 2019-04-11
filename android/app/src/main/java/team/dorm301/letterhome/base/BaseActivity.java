@@ -34,8 +34,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     private final Map<ActivityRequestCode, ActivityCallback> activityCallbackMap = new HashMap<>();
     private final Map<PermissionRequestCode, PermissionCallback> permissionCallbackMap = new HashMap<>();
 
+    @Nullable
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @Nullable
     @BindView(R.id.toolbar_title)
     TextView toolbarTitle;
 
@@ -52,11 +54,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void initToolBar() {
-        toolbar.setTitle("");
+        if (toolbar != null) {
+            toolbar.setTitle("");
+        }
     }
 
     public void setToolbarTitle(String toolbarTitle) {
-        this.toolbarTitle.setText(toolbarTitle);
+        if (this.toolbarTitle != null) {
+            this.toolbarTitle.setText(toolbarTitle);
+        }
     }
 
     public Toolbar getToolbar() {

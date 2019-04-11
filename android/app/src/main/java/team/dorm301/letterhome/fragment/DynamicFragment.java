@@ -1,34 +1,24 @@
 package team.dorm301.letterhome.fragment;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import java.util.List;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.adapter.NewsAdapter;
 import team.dorm301.letterhome.base.BaseFragment;
 import team.dorm301.letterhome.entity.News;
 import team.dorm301.letterhome.http.HttpClient;
 import team.dorm301.letterhome.request.NewsRequest;
-import team.dorm301.letterhome.ui.ToolbarLayout;
 import team.dorm301.letterhome.util.RecyclerViewUtils;
 
 public class DynamicFragment extends BaseFragment {
@@ -50,6 +40,7 @@ public class DynamicFragment extends BaseFragment {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         getBaseActivity().setToolbarTitle("资讯");
+        getBaseActivity().getToolbar().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         // 设置适配器
         newsAdapter = new NewsAdapter(getBaseActivity());
         RecyclerViewUtils.setDefaultConfig(getContext(), rvNews);
@@ -69,7 +60,7 @@ public class DynamicFragment extends BaseFragment {
 
     private void update() {
         HttpClient.request(NewsRequest.class)
-                .getNewsList()
+                .getNewsList(5)
                 .subscribeOn(Schedulers.io())                   // 在IO线程发起网络请求
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<News>>() {

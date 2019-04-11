@@ -12,6 +12,9 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.base.BaseActivity;
 import team.dorm301.letterhome.entity.User;
@@ -111,27 +114,17 @@ public class ProfileActivity extends BaseActivity {
         }
         HttpClient.request(UserRequest.class)
                 .updateProfile(user)
-                .subscribeOn(Schedulers.io())                   // 在IO线程发起网络请求
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Void>() {
+                .enqueue(new Callback<Void>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Void aVoid) {
+                    public void onResponse(Call<Void> call, Response<Void> response) {
                         Toast.makeText( ProfileActivity.this,"更新成功",Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onFailure(Call<Void> call, Throwable t) {
                         Toast.makeText( ProfileActivity.this,"网络错误，更新失败",Toast.LENGTH_SHORT).show();
                         loadProfile();
-                    }
-
-                    @Override
-                    public void onComplete() {
 
                     }
                 });

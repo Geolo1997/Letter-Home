@@ -11,6 +11,9 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.base.BaseActivity;
 import team.dorm301.letterhome.entity.User;
@@ -50,28 +53,16 @@ public class RegisterActivity extends BaseActivity {
         user.setEmail(emailEditText.getText().toString());
         HttpClient.request(UserRequest.class)
                 .register(user)
-                .subscribeOn(Schedulers.io())                   // 在IO线程发起网络请求
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Void>() {
+                .enqueue(new Callback<Void>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Void aVoid) {
+                    public void onResponse(Call<Void> call, Response<Void> response) {
                         showToast("注册成功！");
                         finish();
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onFailure(Call<Void> call, Throwable t) {
                         showToast("网络错误");
-                    }
-
-                    @Override
-                    public void onComplete() {
-
                     }
                 });
     }

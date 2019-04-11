@@ -61,24 +61,6 @@ public class InboxAdapter extends BaseRecyclerViewAdapter<Letter, InboxAdapter.V
 
         public ViewHolder(View view) {
             super(view);
-
-//            view.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    int position = getAdapterPosition();
-//                    Letter letter = getDataList().get(position);
-//                    Intent intent = new Intent(view.getContext(), LetterDetailActivity.class);
-//                    intent.putExtra("letter", letter);
-//                    view.getContext().startActivity(intent);
-//                }
-//            });
-//            view.setOnLongClickListener(new View.OnLongClickListener() {
-//                @Override
-//                public boolean onLongClick(View v) {
-////                mItemClickListener.onItemLongClick(v);
-//                    return true;
-//                }
-//            });
         }
     }
 }
