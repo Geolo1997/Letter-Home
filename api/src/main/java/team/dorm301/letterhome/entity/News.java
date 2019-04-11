@@ -1,5 +1,7 @@
 package team.dorm301.letterhome.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Calendar;
 
@@ -20,6 +22,7 @@ public class News {
     private String imgUrl;
 
     @Transient
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Calendar publishTime;
 
     public News() {
