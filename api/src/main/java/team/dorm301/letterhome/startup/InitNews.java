@@ -81,6 +81,93 @@ public class InitNews implements ApplicationListener<ContextRefreshedEvent> {
         news4.setImgUrl("https://letter-1253606956.cos.ap-beijing.myqcloud.com/4.jpg");
         newsList.add(news4);
 
+        News news5 = new News();
+        news5.setAuthor("江南");
+        news5.setTitle("龙族IV·奥丁之渊");
+        news5.setContent("“这个世界上，只有Bug能挡住Bug,也只有怪物能与怪物为敌! ”路明非每 说一句话就会吐出一口血，“你已经暗示我了，昆古尼尔是Bug,我也是；昆古尼尔 是怪物，我也是，我才是这个世界上……最大的怪物！”“是的，你是这个世界上最大的怪物，哥哥你真棒！”");
+        news5.setImgUrl("https://letter-1253606956.cos.ap-beijing.myqcloud.com/5.jpg");
+        newsList.add(news5);
+
+        News news6 = new News();
+        news6.setAuthor("硕硕");
+        news6.setTitle("华胥引");
+        news6.setContent("摘一朵红，开在阁楼案台， \n" +
+                "抚一曲乐，飘在四季花前。 \n" +
+                "前世今生，袭人 妙玉 几度销魂几声笑叹 \n" +
+                "葬花 花葬 \n" +
+                "怜你 香消花损 却遗憾负去 \n" +
+                "怜你 花枝招展 却孤芳自赏 \n" +
+                "怜你 才华经纶 却堕入尘俗 \n" +
+                "怜你 精明细做 却不解情蛊 \n" +
+                "怜你 温柔贤惠 却不得人心 \n" +
+                "怜你 身世浮沉 却不得善终 \n" +
+                "怜你 通灵古怪 却不谙人事 \n" +
+                "怜你 情痴一枝 却不得开花 \n" +
+                "如梦虚境 莫失莫忘 \n" +
+                "红楼旧梦 莫痴莫念 \n" +
+                "前世今生 因缘劫难 \n" +
+                "红尘后世 且行且惜 \n" +
+                "落红偏向华胥引 \n" +
+                "惺眼一梦了无痕 \n" +
+                "栏杆处泪眼阑干 \n" +
+                "夕阳依旧红半天\n");
+        news6.setImgUrl("https://letter-1253606956.cos.ap-beijing.myqcloud.com/6.jpg");
+        newsList.add(news6);
+
+        News news7 = new News();
+        news7.setAuthor("帆帆");
+        news7.setTitle("毕业感言");
+        news7.setContent("每年凤凰花开时，这就是一个学生飞向另一个世界的旅程，展开了青年的生活。几年的生活，回想起来真是甜蜜，但这些也将随着我们的毕业而写下一个完整的句点。留下一个个永远令人怀念而且独一无二的美好回忆！ 毕业了，回想起这几年的学生生活是这么的多采多姿啊！真希望时光能倒退，但那只是一个不可能实现的梦想罢了。天下没有不散的宴席，有聚就有散，有离别才会有相逢的一天，这是天经地义无法改变的事情。毕业后我要更加努力用功读书，为母校争光，才不会辜负了这些年来老师的细心教导与期望。");
+        news7.setImgUrl("https://letter-1253606956.cos.ap-beijing.myqcloud.com/7.jpg");
+        newsList.add(news7);
+
+        News news8 = new News();
+        news8.setAuthor("超超");
+        news8.setTitle("回首");
+        news8.setContent("回首半生如梦 \n" +
+                "何处停留 \n" +
+                "住在心里的那个人 \n" +
+                "藏在泪中 \n" +
+                "\n" +
+                "回首半生匆匆 \n" +
+                "恍如一梦 \n" +
+                "你像风来了又走 \n" +
+                "我心满了又空\n");
+        news8.setImgUrl("https://letter-1253606956.cos.ap-beijing.myqcloud.com/8.jpg");
+        newsList.add(news8);
+
+        News news9 = new News();
+        news9.setAuthor("维维");
+        news9.setTitle("execution point");
+        news9.setContent("exp（经验值）是一个缩写，它的全名是execution point（处决点数）一种用来量化你对别人造成痛苦的方式。每当你杀死别人，你的exp就将增加。当你有了足够的exp，你的love（等级）就会增加，同样的，love也是一个缩写。它的全名是level of violence（暴力指数）用来衡量一个人伤害别人的能力。你杀的越多，就越容易远离自己的本心，你越远离自己的本心，就越难被伤害，就越容易放任自己去伤害别人。");
+        news9.setImgUrl("https://letter-1253606956.cos.ap-beijing.myqcloud.com/9.jpg");
+        newsList.add(news9);
+
+        News news10 = new News();
+        news10.setAuthor("飞飞");
+        news10.setTitle("雪纷");
+        news10.setContent("闻 \n" +
+                "雪纷 \n" +
+                "乱世人 \n" +
+                "鼓吹轻衣 \n" +
+                "她凌寒谁知 \n" +
+                "漠北烽烟四起 \n" +
+                "只待他金甲一袭 \n" +
+                "暮色渐起清角吹寒 \n" +
+                "终归踏马留她白青丝 \n" +
+                "祈此去经年春风仍未改 \n" +
+                "幸驿寄梅花遥知相思 \n" +
+                "鸿雁有知飞尽天涯 \n" +
+                "十载战乱百年情 \n" +
+                "斑驳流年未觉 \n" +
+                "似岁月暮暝 \n" +
+                "归思难清 \n" +
+                "候战平 \n" +
+                "长亭 \n" +
+                "等\n");
+        news10.setImgUrl("https://letter-1253606956.cos.ap-beijing.myqcloud.com/10.jpg");
+        newsList.add(news10);
+
         newsRepository.saveAll(newsList);
     }
 }
