@@ -58,7 +58,9 @@ dependencies {
 
     // submitButton
     implementation 'me.spark:submitbutton:1.0.1'
-    
+
     // 底部导航栏框架
     implementation 'com.roughike:bottom-bar:2.3.1'
+    // 点赞控件
+    implementation 'com.sackcentury:shinebutton:0.2.0'
 }

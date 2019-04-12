@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.bumptech.glide.Glide;
+import com.sackcentury.shinebuttonlib.ShineButton;
 import java.util.Calendar;
 import java.util.Date;
 import team.dorm301.letterhome.R;
@@ -29,6 +30,8 @@ public class NewsDetailActivity extends BaseActivity {
     TextView tvContent;
     @BindView(R.id.iv_pic)
     ImageView ivPic;
+    @BindView(R.id.shine_button)
+    ShineButton shineButton;
 
     private News news;
 
@@ -42,6 +45,7 @@ public class NewsDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         news = (News) getIntent().getSerializableExtra(IntentExtra.NEWS);
         loadNews();
+        shineButton.bringToFront();
     }
 
     @Override

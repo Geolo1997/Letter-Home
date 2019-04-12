@@ -57,6 +57,8 @@ public class ProfileActivity extends BaseActivity {
     public void loadProfile(){
         HttpClient.request(UserRequest.class)
                 .getMyProfile()
+                .subscribeOn(Schedulers.io())                   // 在IO线程发起网络请求
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<User>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -71,7 +73,7 @@ public class ProfileActivity extends BaseActivity {
                         if (user.isSex()){
                             cbChooseMan.setChecked(true);
                         }
-                        else cbChooseWoman.setChecked(false);
+                        else cbChooseWoman.setChecked(true);
                     }
                     @Override
                     public void onError(Throwable e) {
@@ -124,8 +126,6 @@ public class ProfileActivity extends BaseActivity {
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
                         Toast.makeText( ProfileActivity.this,"网络错误，更新失败",Toast.LENGTH_SHORT).show();
-                        loadProfile();
-
                     }
                 });
     }
