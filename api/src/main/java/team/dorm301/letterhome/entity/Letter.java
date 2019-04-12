@@ -1,10 +1,13 @@
 package team.dorm301.letterhome.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
+import org.hibernate.annotations.CreationTimestamp;
 import team.dorm301.letterhome.serialize.LetterJsonView;
 import team.dorm301.letterhome.serialize.NoneJsonView;
 
 import javax.persistence.*;
+import java.util.Calendar;
 
 /**
  * 信件实体
@@ -31,6 +34,10 @@ public class Letter {
     @JsonView({NoneJsonView.class,
             LetterJsonView.getLetterList.class})
     private User user;                   // 寄信人
+
+    @CreationTimestamp
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Calendar sendTime;
 
     public Letter() {
     }
@@ -89,5 +96,13 @@ public class Letter {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Calendar getSendTime() {
+        return sendTime;
+    }
+
+    public void setSendTime(Calendar sendTime) {
+        this.sendTime = sendTime;
     }
 }
