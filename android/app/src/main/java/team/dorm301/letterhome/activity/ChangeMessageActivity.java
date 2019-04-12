@@ -60,7 +60,7 @@ public class ChangeMessageActivity extends BaseActivity {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        showErrorToast("网络错误");
                     }
 
                     @Override

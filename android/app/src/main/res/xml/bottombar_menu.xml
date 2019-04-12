@@ -2,19 +2,17 @@
 <tabs>
     <tab
         id="@+id/tab_dynamic"
+        icon="@drawable/news"
         title="资讯"
-        icon="@drawable/ic_send"
         barColorWhenSelected="@color/colorPrimary"/>
     <tab
         id="@+id/tab_send"
+        icon="@drawable/write_letter"
         title="发信"
-        icon="@drawable/ic_send"
-        barColorWhenSelected="@color/green"
-        />
+        barColorWhenSelected="@color/green"/>
     <tab
         id="@+id/tab_my"
-        title="我的"
         icon="@drawable/write"
-        barColorWhenSelected="@color/profile"
-        />
+        title="我的"
+        barColorWhenSelected="@color/profile"/>
 </tabs>

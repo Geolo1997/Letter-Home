@@ -7,15 +7,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.spark.submitbutton.SubmitButton;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 import java.util.Date;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -147,13 +144,12 @@ public class WriteReceiverInformationActivity extends BaseActivity {
                     .enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
-
                             onSendLetterSuccess();
                         }
 
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
-
+                            showErrorToast("网络错误");
                         }
                     });
         } else {
@@ -169,9 +165,9 @@ public class WriteReceiverInformationActivity extends BaseActivity {
         dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-               BaseActivity activity = ActivityCollector.getInstance().get(ActivityCollector.getInstance().size() - 2);
-               activity.finish();
-               finish();
+                BaseActivity activity = ActivityCollector.getInstance().get(ActivityCollector.getInstance().size() - 2);
+                activity.finish();
+                finish();
             }
         });
         dialog.show();

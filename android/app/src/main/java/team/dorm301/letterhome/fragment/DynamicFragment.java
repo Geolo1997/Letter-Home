@@ -12,6 +12,8 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.adapter.NewsAdapter;
@@ -76,7 +78,7 @@ public class DynamicFragment extends BaseFragment {
 
                     @Override
                     public void onError(Throwable e) {
-                        getBaseActivity().showToast("网络错误");
+                        getBaseActivity().showErrorToast("网络错误");
                     }
 
                     @Override
@@ -84,5 +86,11 @@ public class DynamicFragment extends BaseFragment {
 
                     }
                 });
+        List<News> newsList = new ArrayList<>();
+        for (int i  =0 ; i < 40; i++) {
+            News news = new News(i,new Date(), "XXXX", "XXX", "fdsfdsfdsfdsfdsfdsfdsfsdfdsfsdfdsfdsfdsfdsDFdfsdf");
+            newsList.add(news);
+        }
+        newsAdapter.setDataList(newsList);
     }
 }

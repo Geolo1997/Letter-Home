@@ -71,7 +71,7 @@ public class InboxActivity extends BaseActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        showToast("网络错误！");
+                        showErrorToast("网络错误！");
                     }
 
                     @Override

@@ -15,43 +15,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        />
+        android:orientation="vertical"/>
 
-    <LinearLayout
-        android:id="@+id/ll_bottom_nav"
+    <com.luseen.spacenavigation.SpaceNavigationView
+        android:id="@+id/space"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/bt_dynamic"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@string/dynamic"/>
-
-        <Button
-            android:id="@+id/bt_send_letter"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@string/send_letter"/>
-
-        <Button
-            android:id="@+id/bt_profile"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@string/profile"/>
-    </LinearLayout>
-
-    <com.roughike.bottombar.BottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        app:bb_behavior="shifting"
-        app:bb_tabXmlResource="@xml/bottombar_menu"/>
+        android:layout_gravity="bottom"
+        app:space_background_color="@color/colorPrimary"/>
 </LinearLayout>

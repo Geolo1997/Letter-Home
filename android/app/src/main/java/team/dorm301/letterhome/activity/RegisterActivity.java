@@ -62,7 +62,7 @@ public class RegisterActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-                        showToast("网络错误");
+                        showErrorToast("网络错误");
                     }
                 });
     }

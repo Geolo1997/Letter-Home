@@ -77,7 +77,7 @@ public class ProfileActivity extends BaseActivity {
                     }
                     @Override
                     public void onError(Throwable e) {
-                        Toast.makeText( ProfileActivity.this,"网络错误，更新失败",Toast.LENGTH_SHORT).show();
+                        showErrorToast("网络错误");
                     }
 
                     @Override

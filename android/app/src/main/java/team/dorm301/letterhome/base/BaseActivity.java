@@ -3,6 +3,7 @@ package team.dorm301.letterhome.base;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,12 +11,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.sdsmdg.tastytoast.TastyToast;
 import java.util.HashMap;
 import java.util.Map;
 import team.dorm301.letterhome.R;
@@ -141,10 +144,24 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void showToast(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        TastyToast.makeText(getApplicationContext(), message, TastyToast.LENGTH_SHORT, TastyToast.INFO);
+    }
+
+    public void showErrorToast(String message) {
+        TastyToast.makeText(getApplicationContext(), message, TastyToast.LENGTH_SHORT, TastyToast.ERROR);
     }
 
     public void showLongToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
+
+
+    public int getColorOf(int res) {
+        return ContextCompat.getColor(this, res);
+    }
+
+    public Drawable getResources(int res) {
+        return ResourcesCompat.getDrawable(getResources(), res, null);
     }
 }

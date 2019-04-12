@@ -66,7 +66,7 @@ public class ProfileFragment extends BaseFragment {
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-
+                        getBaseActivity().showErrorToast("网络错误");
                     }
                 });
     }
