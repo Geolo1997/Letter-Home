@@ -87,6 +87,11 @@
                     android:textColor="#d4ffffff"
                     android:textSize="18sp"
             />
+            <Button
+                android:id="@+id/bt_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="忘记密码"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
