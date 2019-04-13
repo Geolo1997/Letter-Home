@@ -29,18 +29,13 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="UserName"/>
-
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Say something..."/>
-
+                    android:text="个人信息"
+                    android:layout_gravity="center"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -53,6 +48,7 @@
 
         <!--钱包板块-->
         <LinearLayout
+                 android:id="@+id/asd"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:orientation="horizontal"
@@ -70,17 +66,15 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Wallet"/>
+                        android:text="我的余额"
+                        android:layout_gravity="center"/>
 
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="For more information"/>
+
 
             </LinearLayout>
 
@@ -105,31 +99,51 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="History"/>
+                        android:layout_gravity="center"
+                        android:text="已发信件"/>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--注销登录-->
+        <LinearLayout
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="horizontal"
+                android:background="#FFFFFF"
+                android:layout_marginBottom="15dp">
+
+            <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="#4dfd76"
+                    android:padding="8dp"/>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="horizontal">
 
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="For more information"/>
+                        android:text="注销登录"
+                        android:layout_gravity="center"/>
+
+
 
             </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
-
-    <TextView
-            android:id="@+id/tv_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/profile"/>
-    <Button
-            android:id="@+id/bt_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="注销"/>
 </LinearLayout>

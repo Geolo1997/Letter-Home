@@ -1,6 +1,7 @@
 package team.dorm301.letterhome.activity;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -9,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -45,6 +48,7 @@ public class NewsDetailActivity extends BaseActivity {
 
     @Override
     protected int getContentView() {
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         return R.layout.activity_news_detail;
     }
 
@@ -52,6 +56,13 @@ public class NewsDetailActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setSupportActionBar(null);
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);//防止5.x以后半透明影响效果，使用这种透明方式
+        }
+
+
+
         news = (News) getIntent().getSerializableExtra(IntentExtra.NEWS);
         // init actionbar
 //        ActionBar actionBar = getSupportActionBar();
