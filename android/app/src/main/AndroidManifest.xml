@@ -37,11 +37,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.NewsDetailActivity">
-
         </activity>
-=======
         <activity android:name=".activity.WriteReceiverInformationActivity"/>
->>>>>>> feii
     </application>
 
 </manifest>

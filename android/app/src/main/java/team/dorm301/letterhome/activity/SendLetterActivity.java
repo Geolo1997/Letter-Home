@@ -3,6 +3,9 @@ package team.dorm301.letterhome.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.widget.Button;
 import android.widget.EditText;
 

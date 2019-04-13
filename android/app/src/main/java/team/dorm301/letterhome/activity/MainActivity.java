@@ -1,6 +1,9 @@
 package team.dorm301.letterhome.activity;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Explode;
 import android.view.View;
 import android.widget.Button;
 import butterknife.BindView;
@@ -23,6 +26,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setEnterTransition(new Explode().setDuration(2000));
+        getWindow().setExitTransition(new Explode().setDuration(2000));
         onViewClicked(selectedButton);
     }
 
