@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.Slide;
+import android.support.v4.content.ContextCompat;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -31,6 +32,8 @@ public class SendLetterActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setToolbarTitle("发信");
+        getToolbar().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
     }
 
     @OnClick(R.id.send_button)

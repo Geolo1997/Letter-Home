@@ -1,6 +1,7 @@
 package team.dorm301.letterhome.request;
 
 import io.reactivex.Observable;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import team.dorm301.letterhome.entity.Auth;
@@ -10,6 +11,9 @@ import team.dorm301.letterhome.entity.Auth;
  */
 public interface AuthRequest {
 
-    @GET("/auth/login")
+    @GET("auth/login")
     Observable<Auth> login(@Header("Authorization") String basicAuth);
+
+    @GET("auth/logout")
+    Call<Void> logout();
 }

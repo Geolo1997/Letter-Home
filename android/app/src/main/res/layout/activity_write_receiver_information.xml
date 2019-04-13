@@ -1,96 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/ic_bg">
-    <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="24dp"
-            android:background="@color/colorPrimary"
-            android:theme="@style/toolbar_theme">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="发件"/>
-    </android.support.v7.widget.Toolbar>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:background="@drawable/ic_bg">
+
+    <include layout="@layout/layout_tool_bar"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="vertical">
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical"
+        android:layout_marginTop="80dp">
 
         <!--选择寄送方式-->
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"    android:background="@drawable/form_item">
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:theme="@style/form_tv_theme" android:text="请选择寄送方式"/>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:theme="@style/form_sw_theme">
-                <TextView         android:id="@+id/switch_email_tv"        android:layout_width="wrap_content"        android:layout_height="wrap_content"  android:textSize="15sp"      android:text="电子邮件" />
-                <android.support.v7.widget.SwitchCompat android:id="@+id/switch_email" android:gravity="end"
-                                                        android:typeface="normal"
-                                                        android:switchMinWidth="40dp"
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/form_item">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/form_tv_theme"
+                android:text="请选择寄送方式"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:theme="@style/form_sw_theme">
+
+                <TextView
+                    android:id="@+id/switch_email_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="电子邮件"/>
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switch_email"
+                    android:gravity="end"
+                    android:typeface="normal"
+                    android:switchMinWidth="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:theme="@style/form_sw_theme">
-                <TextView         android:id="@+id/switch_rmail_tv_tv"        android:layout_width="wrap_content"        android:layout_height="wrap_content" android:textSize="15sp"       android:text="实体信件" />
-                <android.support.v7.widget.SwitchCompat android:id="@+id/switch_rmail" android:gravity="end"
-                                                        android:typeface="normal"
-                                                        android:switchMinWidth="40dp"
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:theme="@style/form_sw_theme">
+
+                <TextView
+                    android:id="@+id/switch_rmail_tv_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="实体信件"/>
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switch_rmail"
+                    android:gravity="end"
+                    android:typeface="normal"
+                    android:switchMinWidth="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
         <!--电子邮件地址-->
-        <LinearLayout android:id="@+id/receive_email_form" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="20dp" android:background="@drawable/form_item" android:visibility="gone"  >
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/form_tv_theme" android:text="电子邮件地址"/>
+        <LinearLayout
+            android:id="@+id/receive_email_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/form_item"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/form_tv_theme"
+                android:text="电子邮件地址"/>
+
             <EditText
-                    android:id="@+id/receive_email_et"
-                    android:inputType="textEmailAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" style="@style/form_et_theme"/>
+                android:id="@+id/receive_email_et"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/form_et_theme"/>
         </LinearLayout>
         <!--实体收件地址-->
-        <LinearLayout android:id="@+id/receive_rmail_form" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="20dp" android:background="@drawable/form_item" android:visibility="gone">
-            <TextView android:layout_height="wrap_content" android:layout_width="match_parent" style="@style/form_tv_theme" android:text="收件地址"/>
+        <LinearLayout
+            android:id="@+id/receive_rmail_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/form_item"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                style="@style/form_tv_theme"
+                android:text="收件地址"/>
+
             <EditText
-            android:id="@+id/receiver_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="收件人" style="@style/form_et_theme"/>
+                android:id="@+id/receiver_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="收件人"
+                style="@style/form_et_theme"/>
 
-        <EditText
-            android:id="@+id/tel_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="手机" style="@style/form_et_theme"/>
+            <EditText
+                android:id="@+id/tel_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="手机"
+                style="@style/form_et_theme"/>
 
-        <EditText
-            android:id="@+id/receiver_address_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="收件地址" style="@style/form_et_theme" />
+            <EditText
+                android:id="@+id/receiver_address_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="收件地址"
+                style="@style/form_et_theme"/>
 
         </LinearLayout>
     </LinearLayout>
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.spark.submitbutton.SubmitButton
+            android:id="@+id/confirm_button"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <Button
-                android:id="@+id/confirm_button"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="120dp"
-                android:layout_marginBottom="25dp"
-                android:text="发送"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:background="@drawable/button_style"
-        />
+            android:layout_height="match_parent"
+            android:text="发送"
+            android:textColor="@color/gray"
+            app:sub_btn_background="@color/white"
+            app:sub_btn_duration="3000"
+            app:sub_btn_line_color="@color/green"
+            app:sub_btn_ripple_color="@color/green"
+            app:sub_btn_tick_color="@color/white"/>
+
     </RelativeLayout>
 </LinearLayout>

@@ -10,6 +10,7 @@ public class News implements Serializable {
     private String author;
     private String title;
     private String content;
+    private String imgUrl;
 
     public News() {
     }
@@ -24,6 +25,14 @@ public class News implements Serializable {
 
     public long getId() {
         return id;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
     }
 
     public void setId(long id) {
