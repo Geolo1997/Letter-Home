@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_dynamic"
+        icon="@drawable/news"
+        title="资讯"
+        barColorWhenSelected="@color/colorPrimary"/>
+    <tab
+        id="@+id/tab_send"
+        icon="@drawable/write_letter"
+        title="发信"
+        barColorWhenSelected="@color/green"/>
+    <tab
+        id="@+id/tab_my"
+        icon="@drawable/write"
+        title="我的"
+        barColorWhenSelected="@color/profile"/>
+</tabs>

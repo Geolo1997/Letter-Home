@@ -75,7 +75,7 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        showLongToast("用户名或密码错误");
+                        showErrorToast("用户名或密码错误");
                     }
 
                     @Override

@@ -21,7 +21,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         Yunzhi.init()
-                .setApi("http://192.168.3.12:8888")
+                .setApi("http://192.168.3.11:8888")
                 .setTimeout(10L)
                 .registerBean(AuthService.class, new AuthServiceImpl())
                 .registerBean(LetterService.class, new LetterServiceImpl());

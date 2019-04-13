@@ -8,50 +8,19 @@
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
-    <!--<android.support.v7.widget.Toolbar-->
-            <!--android:id="@+id/tb"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="?attr/actionBarSize"-->
-            <!--android:background="@color/colorPrimary"-->
-            <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
-            <!--app:popupTheme="@style/Theme.AppCompat.Light">-->
+    <include layout="@layout/layout_tool_bar"/>
 
-    <!--</android.support.v7.widget.Toolbar>-->
     <LinearLayout
         android:id="@+id/fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        />
+        android:orientation="vertical"/>
 
-    <LinearLayout
-        android:id="@+id/ll_bottom_nav"
+    <com.luseen.spacenavigation.SpaceNavigationView
+        android:id="@+id/space"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/bt_dynamic"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@string/dynamic"/>
-
-        <Button
-            android:id="@+id/bt_send_letter"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@string/send_letter"/>
-
-        <Button
-            android:id="@+id/bt_profile"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@string/profile"/>
-    </LinearLayout>
-
-
+        android:layout_gravity="bottom"
+        app:space_background_color="@color/colorPrimary"/>
 </LinearLayout>

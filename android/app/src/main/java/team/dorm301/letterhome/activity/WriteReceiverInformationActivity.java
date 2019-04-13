@@ -3,18 +3,20 @@ package team.dorm301.letterhome.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import com.spark.submitbutton.SubmitButton;
 import java.util.Date;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.base.BaseActivity;
 import team.dorm301.letterhome.config.Yunzhi;
@@ -45,7 +47,7 @@ public class WriteReceiverInformationActivity extends BaseActivity {
     @BindView(R.id.receive_rmail_form)
     LinearLayout receiveRmailForm;
     @BindView(R.id.confirm_button)
-    Button confirmButton;
+    SubmitButton confirmButton;
 
     private Letter letter = new Letter();
 
@@ -59,8 +61,11 @@ public class WriteReceiverInformationActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setToolbarTitle("发信");
+        getToolbar().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
+
         letterService = Yunzhi.getBean(LetterService.class);
-//        UtilsBarStyle.setActionBar(this);
+        setToolbarTitle("收信人信息");
         User user = new User();
         user.setUsername(DAOService.getInstance().getLogInfo().getUsername());
         letter.setUser(user);
@@ -135,29 +140,16 @@ public class WriteReceiverInformationActivity extends BaseActivity {
         String formJudge = formJudge();
         if ("formGood".equals(formJudge)) {
             letter.setSendTime(new Date());
-            // -----------test------------
-            onSendLetterSuccess();
-            // -----------end test--------
             letterService.sendLetter(letter)
-                    .subscribe(new Observer<Void>() {
+                    .enqueue(new Callback<Void>() {
                         @Override
-                        public void onSubscribe(Disposable d) {
-
-                        }
-
-                        @Override
-                        public void onNext(Void aVoid) {
+                        public void onResponse(Call<Void> call, Response<Void> response) {
                             onSendLetterSuccess();
                         }
 
                         @Override
-                        public void onError(Throwable e) {
-                            showToast("网络错误");
-                        }
-
-                        @Override
-                        public void onComplete() {
-
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            showErrorToast("网络错误");
                         }
                     });
         } else {
@@ -173,9 +165,9 @@ public class WriteReceiverInformationActivity extends BaseActivity {
         dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-               BaseActivity activity = ActivityCollector.getInstance().get(ActivityCollector.getInstance().size() - 2);
-               activity.finish();
-               finish();
+                BaseActivity activity = ActivityCollector.getInstance().get(ActivityCollector.getInstance().size() - 2);
+                activity.finish();
+                finish();
             }
         });
         dialog.show();

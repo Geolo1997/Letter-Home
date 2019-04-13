@@ -25,6 +25,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:design:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -52,7 +53,18 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'jp.wasabeef:glide-transformations:2.0.1'
 
+    // ListItemView
+    implementation 'com.lucasurbas:listitemview:1.1.1'
 
+    // submitButton
+    implementation 'me.spark:submitbutton:1.0.1'
 
-
+    // 底部导航栏框架 https://github.com/armcha/Space-Navigation-View
+    implementation 'com.github.armcha:SpaceNavigationView:1.6.0'
+    // 点赞控件
+    implementation 'com.sackcentury:shinebutton:0.2.0'
+    // tastytoast
+    implementation 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
+    // 弹出菜单
+    implementation 'com.lrq.menu:addpopmenu:1.0.7'
 }

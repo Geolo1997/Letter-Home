@@ -6,11 +6,6 @@
               android:layout_height="match_parent"
               android:background="#eeeeee">
 
-    <team.dorm301.letterhome.ui.ToolbarLayout
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"/>
-
     <!--个人信息块-->
     <LinearLayout
             android:id="@+id/ll_profile"

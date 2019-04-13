@@ -1,6 +1,7 @@
 package team.dorm301.letterhome.fragment;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import team.dorm301.letterhome.R;
 import team.dorm301.letterhome.activity.LoginActivity;
 import team.dorm301.letterhome.activity.ProfileActivity;
@@ -26,8 +30,6 @@ import team.dorm301.letterhome.ui.ToolbarLayout;
 
 public class ProfileFragment extends BaseFragment {
 
-    @BindView(R.id.toolbar)
-    ToolbarLayout toolbar;
     @BindView(R.id.tv_profile)
     TextView tvProfile;
 
@@ -40,10 +42,8 @@ public class ProfileFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        toolbar.setTitle("我的");
-        Button backButton = toolbar.getBtToolbarLeft();
-        backButton.setEnabled(false);
-        backButton.setText("");
+        getBaseActivity().setToolbarTitle("我的");
+        getBaseActivity().getToolbar().setBackgroundColor(ContextCompat.getColor(getContext(),R.color.profile));
         return rootView;
     }
 
@@ -56,33 +56,17 @@ public class ProfileFragment extends BaseFragment {
     public void onLogout() {
         HttpClient.request(AuthRequest.class)
                 .logout()
-                . subscribeOn(Schedulers.io())                   // 在IO线程发起网络请求
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Void>() {
+                . enqueue(new Callback<Void>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Void aVoid) {
+                    public void onResponse(Call<Void> call, Response<Void> response) {
                         DAOService.getInstance().saveLogInfo(null);
                         Yunzhi.clearToken();
                         getBaseActivity().startActivityAndFinish(LoginActivity.class);
-
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                        DAOService.getInstance().saveLogInfo(null);
-                        Yunzhi.clearToken();
-                        getBaseActivity().startActivityAndFinish(LoginActivity.class);
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        getBaseActivity().showErrorToast("网络错误");
                     }
                 });
     }
