@@ -5,33 +5,36 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
+import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import team.dorm301.letterhome.R;
+import team.dorm301.letterhome.activity.InboxActivity;
 import team.dorm301.letterhome.activity.LoginActivity;
 import team.dorm301.letterhome.activity.ProfileActivity;
-import team.dorm301.letterhome.activity.InboxActivity;
 import team.dorm301.letterhome.base.BaseFragment;
 import team.dorm301.letterhome.config.Yunzhi;
 import team.dorm301.letterhome.dao.DAOService;
-import team.dorm301.letterhome.entity.LogInfo;
 import team.dorm301.letterhome.http.HttpClient;
 import team.dorm301.letterhome.request.AuthRequest;
-import team.dorm301.letterhome.ui.ToolbarLayout;
 
 public class ProfileFragment extends BaseFragment {
 
-    @BindView(R.id.tv_profile)
-    TextView tvProfile;
+
+    Unbinder unbinder;
+    @BindView(R.id.logout)
+    LinearLayout logout;
+    @BindView(R.id.ll_profile)
+    LinearLayout llProfile;
+    @BindView(R.id.history_view)
+    LinearLayout historyView;
+
+
 
     @Override
     protected int getContentView() {
@@ -43,36 +46,52 @@ public class ProfileFragment extends BaseFragment {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         getBaseActivity().setToolbarTitle("我的");
-        getBaseActivity().getToolbar().setBackgroundColor(ContextCompat.getColor(getContext(),R.color.profile));
+        getBaseActivity().getToolbar().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.profile));
+        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
-    @OnClick(R.id.history_view)
-    public void onViewClicked() {
-        getBaseActivity().startActivity(InboxActivity.class);
+
+
+    @OnClick({R.id.ll_profile, R.id.history_view, R.id.logout})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_profile:
+                getBaseActivity().startActivity(ProfileActivity.class);
+                break;
+            case R.id.history_view:
+                getBaseActivity().startActivity(InboxActivity.class);
+                break;
+            case R.id.logout:
+                HttpClient.request(AuthRequest.class)
+                        .logout()
+                        .enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                DAOService.getInstance().saveLogInfo(null);
+                                Yunzhi.clearToken();
+                                getBaseActivity().startActivityAndFinish(LoginActivity.class);
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                getBaseActivity().showErrorToast("网络错误");
+                            }
+                        });
+                break;
+        }
     }
 
-    @OnClick(R.id.bt_logout)
-    public void onLogout() {
-        HttpClient.request(AuthRequest.class)
-                .logout()
-                . enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        DAOService.getInstance().saveLogInfo(null);
-                        Yunzhi.clearToken();
-                        getBaseActivity().startActivityAndFinish(LoginActivity.class);
-                    }
+//    @OnClick(R.id.history_view)
+//    public void onViewClicked() {
+//        getBaseActivity().startActivity(InboxActivity.class);
+//    }
+//
+//
+//    @OnClick(R.id.ll_profile)
+//    public void toProfileClicked() {
+//        getBaseActivity().startActivity(ProfileActivity.class);
+//    }
 
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        getBaseActivity().showErrorToast("网络错误");
-                    }
-                });
-    }
 
-    @OnClick(R.id.ll_profile)
-    public void toProfileClicked() {
-        getBaseActivity().startActivity(ProfileActivity.class);
-    }
 }

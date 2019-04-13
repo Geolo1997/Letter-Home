@@ -2,11 +2,13 @@
 <LinearLayout
     android:id="@+id/ll_news_item"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+   >
 
     <TextView
         android:id="@+id/tv_title"
@@ -27,5 +29,6 @@
         app:liv_icon="@drawable/ic_mailbox2"
         app:liv_menu="@menu/multiple_action_menu"
         app:liv_multiline="false"
-        app:liv_displayMode="avatar"/>
+        app:liv_displayMode="avatar"
+       />
 </LinearLayout>
