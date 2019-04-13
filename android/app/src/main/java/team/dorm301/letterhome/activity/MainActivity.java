@@ -1,7 +1,9 @@
 package team.dorm301.letterhome.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 import butterknife.BindView;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
@@ -27,6 +29,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setFragment(R.id.fragment, DynamicFragment.class);
         initSpaceNavigationView(savedInstanceState);
     }
 
@@ -35,7 +38,6 @@ public class MainActivity extends BaseActivity {
         spaceNavigationView.addSpaceItem(new SpaceItem("资讯", R.drawable.news));
         spaceNavigationView.addSpaceItem(new SpaceItem("我的", R.drawable.mine));
         spaceNavigationView.setCentreButtonIcon(R.drawable.write_letter);
-        spaceNavigationView.setCentreButtonColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
         spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {
@@ -43,7 +45,6 @@ public class MainActivity extends BaseActivity {
                         .addMenuItem(new PopMenuItem("写信", getResources(R.drawable.write_letter)))
                         .addMenuItem(new PopMenuItem("私密", getResources(R.drawable.write_letter)))
                         .addMenuItem(new PopMenuItem("家庭圈", getResources(R.drawable.write_letter)))
-
                         .setOnItemClickListener(new PopMenuItemListener() {
                             @Override
                             public void onItemClick(PopMenu popMenu, int position) {
@@ -62,13 +63,13 @@ public class MainActivity extends BaseActivity {
             public void onItemClick(int itemIndex, String itemName) {
                 switch (itemIndex) {
                     case 0:
-                        spaceNavigationView.changeSpaceBackgroundColor(ContextCompat.getColor(getApplicationContext(),
-                                R.color.colorPrimary));
+                        spaceNavigationView.changeSpaceBackgroundColor(getColorOf(R.color.colorPrimary));
+                        getToolbar().setBackgroundColor(getColorOf(R.color.colorPrimary));
                         setFragment(R.id.fragment, DynamicFragment.class);
                         break;
                     case 1:
-                        spaceNavigationView.changeSpaceBackgroundColor(ContextCompat.getColor(getApplicationContext(),
-                                R.color.profile));
+                        spaceNavigationView.changeSpaceBackgroundColor(getColorOf(R.color.profile));
+                        getToolbar().setBackgroundColor(getColorOf(R.color.profile));
                         setFragment(R.id.fragment, ProfileFragment.class);
                         break;
                 }

@@ -3,7 +3,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FFFFF0">
     <!--<team.dorm301.letterhome.ui.ToolbarLayout-->
             <!--android:id="@+id/toolbar"-->
             <!--android:layout_width="match_parent"-->
@@ -56,13 +57,14 @@
                     android:text="182****5882"/>
         </RelativeLayout>
     </RelativeLayout>
-    <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"></LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:background="#FFFFF0" android:layout_height="30dp"></LinearLayout>
  <!--<修改个人信息>-->
     <LinearLayout
             android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#FFFFF0"
          
     >
         <!--<昵称修改>-->

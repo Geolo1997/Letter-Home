@@ -30,6 +30,7 @@ public class SendLetterActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setToolbarTitle("发信");
+        setBackEnable(true);
         getToolbar().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
     }
 

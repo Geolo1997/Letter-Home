@@ -62,7 +62,7 @@ public class WriteReceiverInformationActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setToolbarTitle("发信");
-        getToolbar().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.gray));
+        setBackEnable(true);
 
         letterService = Yunzhi.getBean(LetterService.class);
         setToolbarTitle("收信人信息");

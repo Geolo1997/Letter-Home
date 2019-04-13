@@ -20,7 +20,6 @@ import team.dorm301.letterhome.base.BaseActivity;
 import team.dorm301.letterhome.entity.User;
 import team.dorm301.letterhome.http.HttpClient;
 import team.dorm301.letterhome.request.UserRequest;
-import team.dorm301.letterhome.ui.ToolbarLayout;
 
 public class ProfileActivity extends BaseActivity {
 
@@ -30,7 +29,7 @@ public class ProfileActivity extends BaseActivity {
     ImageView hHead;
     @BindView(R.id.user_line)
     ImageView userLine;
-//    @BindView(R.id.toolbar)
+    //    @BindView(R.id.toolbar)
 //    ToolbarLayout toolbar;
     @BindView(R.id.user_name)
     TextView userName;
@@ -54,7 +53,7 @@ public class ProfileActivity extends BaseActivity {
         return R.layout.activity_change_message;
     }
 
-    public void loadProfile(){
+    public void loadProfile() {
         HttpClient.request(UserRequest.class)
                 .getMyProfile()
                 .subscribeOn(Schedulers.io())                   // 在IO线程发起网络请求
@@ -63,18 +62,19 @@ public class ProfileActivity extends BaseActivity {
                     @Override
                     public void onSubscribe(Disposable d) {
                     }
+
                     @Override
                     public void onNext(User user) {
-                        userName.setText(user.getUsername()) ;
+                        userName.setText(user.getUsername());
                         userVal.setText(user.getPhone());
                         etChangeName.setText(user.getUsername());
                         etChangeMailboxNumber.setText(user.getEmail());
                         etChangePhoneNumber.setText(user.getPhone());
-                        if (user.isSex()){
+                        if (user.isSex()) {
                             cbChooseMan.setChecked(true);
-                        }
-                        else cbChooseWoman.setChecked(true);
+                        } else cbChooseWoman.setChecked(true);
                     }
+
                     @Override
                     public void onError(Throwable e) {
                         showErrorToast("网络错误");
@@ -85,7 +85,6 @@ public class ProfileActivity extends BaseActivity {
 
                     }
                 });
-
     }
 
     @Override
@@ -106,12 +105,10 @@ public class ProfileActivity extends BaseActivity {
         user.setUsername(etChangeName.getText().toString());
         user.setEmail(etChangeMailboxNumber.getText().toString());
         user.setPhone(etChangePhoneNumber.getText().toString());
-        if(cbChooseMan.isChecked())
-        {
+        if (cbChooseMan.isChecked()) {
             user.setSex(cbChooseMan.isChecked());
         }
-        if (cbChooseWoman.isChecked())
-        {
+        if (cbChooseWoman.isChecked()) {
             user.setSex(false);
         }
         HttpClient.request(UserRequest.class)
@@ -119,13 +116,12 @@ public class ProfileActivity extends BaseActivity {
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        Toast.makeText( ProfileActivity.this,"更新成功",Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(ProfileActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText( ProfileActivity.this,"网络错误，更新失败",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfileActivity.this, "网络错误，更新失败", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

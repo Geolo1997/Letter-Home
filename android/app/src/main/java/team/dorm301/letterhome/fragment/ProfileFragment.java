@@ -1,14 +1,17 @@
 package team.dorm301.letterhome.fragment;
 
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,10 +49,10 @@ public class ProfileFragment extends BaseFragment {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         getBaseActivity().setToolbarTitle("我的");
-        getBaseActivity().getToolbar().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.profile));
-        unbinder = ButterKnife.bind(this, rootView);
+
         return rootView;
     }
+
 
 
 
