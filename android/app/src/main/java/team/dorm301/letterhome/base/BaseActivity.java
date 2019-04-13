@@ -14,10 +14,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.*;
 import com.sdsmdg.tastytoast.TastyToast;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +44,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Nullable
     @BindView(R.id.toolbar_title)
     TextView toolbarTitle;
+    @Nullable
+    @BindView(R.id.bt_back)
+    Button btBack;
+
+    @Optional
+    @OnClick(R.id.bt_back)
+    public void back() {
+        finish();
+    }
 
     protected abstract int getContentView();
 
@@ -59,6 +69,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void initToolBar() {
         if (toolbar != null) {
             toolbar.setTitle("");
+        }
+    }
+
+    public void setBackEnable(boolean enable) {
+        if (enable) {
+            btBack.setVisibility(View.VISIBLE);
+        } else {
+            btBack.setVisibility(View.GONE);
         }
     }
 

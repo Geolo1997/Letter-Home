@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:padding="10dp">
+        <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="sadadas"
+                android:textStyle="bold"
+                android:textSize="36px"
+        />
+
+        <TextView
+                android:id="@+id/tv_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:textSize="24px"
+                android:text="ssss"/>
+        <TextView
+                android:id="@+id/tv_publish_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:textSize="24px"
+                android:text="19980205"/>
+
+
+
+        <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="28px"
+                android:text="sa4684684"/>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
