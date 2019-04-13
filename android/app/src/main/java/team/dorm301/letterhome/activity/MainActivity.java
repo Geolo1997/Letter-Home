@@ -27,6 +27,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setFragment(R.id.fragment, DynamicFragment.class);
         initSpaceNavigationView(savedInstanceState);
     }
 
@@ -35,7 +36,6 @@ public class MainActivity extends BaseActivity {
         spaceNavigationView.addSpaceItem(new SpaceItem("资讯", R.drawable.news));
         spaceNavigationView.addSpaceItem(new SpaceItem("我的", R.drawable.mine));
         spaceNavigationView.setCentreButtonIcon(R.drawable.write_letter);
-        spaceNavigationView.setCentreButtonColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
         spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {
@@ -62,13 +62,9 @@ public class MainActivity extends BaseActivity {
             public void onItemClick(int itemIndex, String itemName) {
                 switch (itemIndex) {
                     case 0:
-                        spaceNavigationView.changeSpaceBackgroundColor(ContextCompat.getColor(getApplicationContext(),
-                                R.color.colorPrimary));
                         setFragment(R.id.fragment, DynamicFragment.class);
                         break;
                     case 1:
-                        spaceNavigationView.changeSpaceBackgroundColor(ContextCompat.getColor(getApplicationContext(),
-                                R.color.profile));
                         setFragment(R.id.fragment, ProfileFragment.class);
                         break;
                 }

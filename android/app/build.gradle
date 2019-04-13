@@ -52,13 +52,8 @@ dependencies {
     // 图像框架glide
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'jp.wasabeef:glide-transformations:2.0.1'
-
-    // ListItemView
-    implementation 'com.lucasurbas:listitemview:1.1.1'
-
     // submitButton
     implementation 'me.spark:submitbutton:1.0.1'
-
     // 底部导航栏框架 https://github.com/armcha/Space-Navigation-View
     implementation 'com.github.armcha:SpaceNavigationView:1.6.0'
     // 点赞控件
@@ -67,4 +62,6 @@ dependencies {
     implementation 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
     // 弹出菜单
     implementation 'com.lrq.menu:addpopmenu:1.0.7'
+    // 轮播图
+    implementation 'com.github.rtugeek:materialbanner:1.0.2'
 }

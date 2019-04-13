@@ -1,11 +1,13 @@
 <resources>
     <color name="colorPrimary">#1E90FF</color>
-    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#104E8B</color>
     <color name="colorRed">#fc0000</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#b7b7b7</color>
     <color name="titleBar">#c6cab9</color>
-    <color name="green">#14f500</color>
+    <color name="green">#4682B4</color>
     <color name="profile">#dac364</color>
+    <color name="deep_white">#F5F5F5</color>
+    <color name="white">#FFFFFF</color>
 </resources>
