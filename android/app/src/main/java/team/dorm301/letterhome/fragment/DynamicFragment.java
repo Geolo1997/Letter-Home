@@ -2,7 +2,6 @@ package team.dorm301.letterhome.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -95,7 +94,7 @@ public class DynamicFragment extends BaseFragment {
 
     private void loadNewsList() {
         HttpClient.request(NewsRequest.class)
-                .getNewsList(5)
+                .getNewsList((int) (Math.random() * 10 + 10))
                 .subscribeOn(Schedulers.io())                   // 在IO线程发起网络请求
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<News>>() {
@@ -108,7 +107,7 @@ public class DynamicFragment extends BaseFragment {
                     public void onNext(List<News> news) {
                         newsList = news;
                         materialBanner.setPages(new MaterialBannerAdapter.NetImageHolderCreator(),
-                                news.subList(0, 2));
+                                news.subList(0, 3));
                         newsAdapter.setDataList(news.subList(3, news.size()));
                     }
 
@@ -122,6 +121,9 @@ public class DynamicFragment extends BaseFragment {
 
                     }
                 });
+    }
+
+    public void testData() {
         List<News> newsList = new ArrayList<>();
         for (int i = 0; i < 40; i++) {
             News news = new News(i, new Date(), "作者编号" + i, "你好的开，分foil按单价法搜ID发的啥地方所发生的dfg",

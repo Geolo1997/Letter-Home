@@ -19,6 +19,6 @@ public interface UserRequest {
     @PUT("user")
     Call<Void> updateProfile(@Body User user);
 
-    @PUT("user/forget")
-    Observable<String> forgetPassword(@Query("username") String username);
+    @GET("user/forget")
+    Call<String> forgetPassword(@Query("username") String username);
 }

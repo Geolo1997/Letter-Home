@@ -44,9 +44,9 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onCentreButtonClick() {
                 PopMenu mPopMenu = new PopMenu.Builder().attachToActivity(MainActivity.this)
-                        .addMenuItem(new PopMenuItem("写信", getResources(R.drawable.write_letter)))
-                        .addMenuItem(new PopMenuItem("私密", getResources(R.drawable.write_letter)))
-                        .addMenuItem(new PopMenuItem("家庭圈", getResources(R.drawable.write_letter)))
+                        .addMenuItem(new PopMenuItem("", getResources(R.drawable.send_letter)))
+                        .addMenuItem(new PopMenuItem("", getResources(R.drawable.friend)))
+                        .addMenuItem(new PopMenuItem("", getResources(R.drawable.query)))
                         .setOnItemClickListener(new PopMenuItemListener() {
                             @Override
                             public void onItemClick(PopMenu popMenu, int position) {
@@ -65,13 +65,13 @@ public class MainActivity extends BaseActivity {
             public void onItemClick(int itemIndex, String itemName) {
                 switch (itemIndex) {
                     case 0:
-                        spaceNavigationView.changeSpaceBackgroundColor(getColorOf(R.color.colorPrimary));
-                        getToolbar().setBackgroundColor(getColorOf(R.color.colorPrimary));
+//                        spaceNavigationView.changeSpaceBackgroundColor(getColorOf(R.color.colorPrimary));
+//                        getToolbar().setBackgroundColor(getColorOf(R.color.colorPrimary));
                         setFragment(R.id.fragment, DynamicFragment.class);
                         break;
                     case 1:
-                        spaceNavigationView.changeSpaceBackgroundColor(getColorOf(R.color.profile));
-                        getToolbar().setBackgroundColor(getColorOf(R.color.profile));
+//                        spaceNavigationView.changeSpaceBackgroundColor(getColorOf(R.color.profile));
+//                        getToolbar().setBackgroundColor(getColorOf(R.color.profile));
                         setFragment(R.id.fragment, ProfileFragment.class);
                         break;
                 }

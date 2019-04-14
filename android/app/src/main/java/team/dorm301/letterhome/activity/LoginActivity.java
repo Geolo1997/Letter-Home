@@ -1,13 +1,12 @@
 package team.dorm301.letterhome.activity;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.Observer;
@@ -30,6 +29,8 @@ public class LoginActivity extends BaseActivity {
     CheckBox cbSavePassword;
     @BindView(R.id.cb_auto_login)
     CheckBox cbAutoLogin;
+    @BindView(R.id.tv_hint)
+    TextView tvHint;
 
     private AuthService authService;
     private CustomVideoView videoview;
@@ -46,6 +47,7 @@ public class LoginActivity extends BaseActivity {
         this.authService = Yunzhi.getBean(AuthService.class);
         loadLogInfo();
     }
+
     private void initView() {
         //加载视频资源控件
         videoview = (CustomVideoView) findViewById(R.id.videoview);
@@ -75,6 +77,7 @@ public class LoginActivity extends BaseActivity {
         videoview.stopPlayback();
         super.onStop();
     }
+
     private void loadLogInfo() {
         LogInfo logInfo = DAOService.getInstance().getLogInfo();
         if (logInfo != null) {
@@ -88,8 +91,16 @@ public class LoginActivity extends BaseActivity {
     @OnClick(R.id.login_button)
     public void onViewClicked() {
         Log.d(TAG, "获取用户名和密码");
-        String username = this.usernameEditText.getText().toString();
-        String password = this.passwordEditText.getText().toString();
+        String username = this.usernameEditText.getText().toString().trim();
+        String password = this.passwordEditText.getText().toString().trim();
+        if ("".equals(username)) {
+            tvHint.setText("用户名不能为空");
+            return;
+        }
+        if ("".equals(password)) {
+            tvHint.setText("密码不能为空");
+            return;
+        }
         boolean savePassword = cbSavePassword.isChecked();
         boolean autoLogin = cbAutoLogin.isChecked();
         final LogInfo logInfo = new LogInfo(username, password, savePassword, autoLogin);
@@ -110,7 +121,7 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        showErrorToast("用户名或密码错误");
+                        tvHint.setText("用户名或密码错误");
                     }
 
                     @Override

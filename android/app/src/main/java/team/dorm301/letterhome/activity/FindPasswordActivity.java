@@ -7,8 +7,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,33 +43,51 @@ public class FindPasswordActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setToolbarTitle("重置密码");
+        setBackEnable(true);
     }
 
     @OnClick(R.id.bt_get_confirm_code)
     public void onBtGetConfirmCodeClicked() {
-        String username = etUsername.getText().toString();
+        String username = etUsername.getText().toString().trim();
+        if ("".equals(username)) {
+            hintText.setText("用户名不能为空");
+            return;
+        }
         HttpClient.request(UserRequest.class)
                 .forgetPassword(username)
-                .subscribe(new Observer<String>() {
+//                .subscribe(new Observer<String>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(String s) {
+//                        confirmCode = s;
+//                        getConfirmCountDown();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        showErrorToast("网络错误");
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//                });
+                .enqueue(new Callback<String>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(String s) {
-                        confirmCode = s;
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        confirmCode = response.body();
                         getConfirmCountDown();
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onFailure(Call<String> call, Throwable t) {
                         showErrorToast("网络错误");
-                    }
-
-                    @Override
-                    public void onComplete() {
-
                     }
                 });
     }
@@ -79,7 +95,8 @@ public class FindPasswordActivity extends BaseActivity {
     private void getConfirmCountDown() {
         int totalTime = 30000;
         int intervalTime = 1000;
-        btGetConfirmCode.setEnabled(false);
+        btGetConfirmCode.setClickable(false);
+        btGetConfirmCode.setBackgroundColor(getColorOf(R.color.gray));
         new CountDownTimer(totalTime, intervalTime) {
 
             @Override
@@ -90,7 +107,8 @@ public class FindPasswordActivity extends BaseActivity {
             @Override
             public void onFinish() {
                 btGetConfirmCode.setText("获取验证码");
-                btGetConfirmCode.setEnabled(true);
+                btGetConfirmCode.setClickable(true);
+                btGetConfirmCode.setBackgroundColor(getColorOf(R.color.colorPrimary));
             }
         };
     }

@@ -21,8 +21,7 @@ import team.dorm301.letterhome.http.HttpClient;
 import team.dorm301.letterhome.request.UserRequest;
 
 public class RegisterActivity extends BaseActivity {
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+
     @BindView(R.id.username_edit_text)
     EditText usernameEditText;
     @BindView(R.id.password_edit_text)
@@ -31,8 +30,6 @@ public class RegisterActivity extends BaseActivity {
     EditText emailEditText;
     @BindView(R.id.hint_text)
     TextView hintText;
-    @BindView(R.id.login_button)
-    android.widget.Button loginButton;
 
     @Override
     protected int getContentView() {
@@ -42,15 +39,32 @@ public class RegisterActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setToolbarTitle("注册");
+        setBackEnable(true);
     }
 
 
-    @OnClick(R.id.login_button)
+    @OnClick(R.id.bt_register)
     public void onViewClicked() {
+        String username = this.usernameEditText.getText().toString().trim();
+        String password = this.passwordEditText.getText().toString().trim();
+        String email = emailEditText.getText().toString().trim();
+        if ("".equals(username)) {
+            hintText.setText("用户名不能为空");
+            return;
+        }
+        if ("".equals(password)) {
+            hintText.setText("密码不能为空");
+            return;
+        }
+        if ("".equals(email)) {
+            hintText.setText("邮箱不能为空");
+            return;
+        }
         User user = new User();
-        user.setUsername(usernameEditText.getText().toString());
-        user.setPassword(passwordEditText.getText().toString());
-        user.setEmail(emailEditText.getText().toString());
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
         HttpClient.request(UserRequest.class)
                 .register(user)
                 .enqueue(new Callback<Void>() {

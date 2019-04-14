@@ -29,7 +29,7 @@
         android:layout_gravity="bottom"
         app:layout_behavior="com.luseen.spacenavigation.SpaceNavigationViewBehavior"
         android:background="@color/green"
-        app:centre_button_color="@color/green"
+        app:centre_button_color="#4682B4"
         app:space_background_color="@color/white"
         app:active_item_color="@color/green"/>
 </FrameLayout>

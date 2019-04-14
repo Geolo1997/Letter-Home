@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -47,7 +48,7 @@ public class WriteReceiverInformationActivity extends BaseActivity {
     @BindView(R.id.receive_rmail_form)
     LinearLayout receiveRmailForm;
     @BindView(R.id.confirm_button)
-    SubmitButton confirmButton;
+    Button confirmButton;
 
     private Letter letter = new Letter();
 

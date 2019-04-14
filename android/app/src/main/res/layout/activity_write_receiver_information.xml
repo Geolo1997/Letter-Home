@@ -134,23 +134,15 @@
                 style="@style/form_et_theme"/>
 
         </LinearLayout>
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.spark.submitbutton.SubmitButton
+        <Button
             android:id="@+id/confirm_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="发送"
-            android:textColor="@color/gray"
-            app:sub_btn_background="@color/white"
-            app:sub_btn_duration="3000"
-            app:sub_btn_line_color="@color/green"
-            app:sub_btn_ripple_color="@color/green"
-            app:sub_btn_tick_color="@color/white"/>
-
-    </RelativeLayout>
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/send_letter"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+    </LinearLayout>
 </LinearLayout>
