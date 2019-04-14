@@ -15,6 +15,14 @@
         android:background="@color/green"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        <Button
+                android:id="@+id/bt_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                android:background="@mipmap/back"
+                android:layout_gravity="left|bottom"/>
         <TextView
             android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"

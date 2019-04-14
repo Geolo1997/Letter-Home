@@ -84,6 +84,7 @@ public class LoginActivity extends BaseActivity {
             cbAutoLogin.setChecked(logInfo.isAutoLogin());
         }
     }
+
     @OnClick(R.id.login_button)
     public void onViewClicked() {
         Log.d(TAG, "获取用户名和密码");
@@ -122,5 +123,10 @@ public class LoginActivity extends BaseActivity {
     @OnClick(R.id.bt_register)
     public void toRegisterView() {
         startActivity(RegisterActivity.class);
+    }
+
+    @OnClick(R.id.bt_forget)
+    public void toForgetPassword() {
+        startActivity(FindPasswordActivity.class);
     }
 }

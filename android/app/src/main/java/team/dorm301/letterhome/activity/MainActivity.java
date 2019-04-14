@@ -2,8 +2,10 @@ package team.dorm301.letterhome.activity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 import butterknife.BindView;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
@@ -45,7 +47,6 @@ public class MainActivity extends BaseActivity {
                         .addMenuItem(new PopMenuItem("写信", getResources(R.drawable.write_letter)))
                         .addMenuItem(new PopMenuItem("私密", getResources(R.drawable.write_letter)))
                         .addMenuItem(new PopMenuItem("家庭圈", getResources(R.drawable.write_letter)))
-
                         .setOnItemClickListener(new PopMenuItemListener() {
                             @Override
                             public void onItemClick(PopMenu popMenu, int position) {
@@ -64,9 +65,13 @@ public class MainActivity extends BaseActivity {
             public void onItemClick(int itemIndex, String itemName) {
                 switch (itemIndex) {
                     case 0:
+                        spaceNavigationView.changeSpaceBackgroundColor(getColorOf(R.color.colorPrimary));
+                        getToolbar().setBackgroundColor(getColorOf(R.color.colorPrimary));
                         setFragment(R.id.fragment, DynamicFragment.class);
                         break;
                     case 1:
+                        spaceNavigationView.changeSpaceBackgroundColor(getColorOf(R.color.profile));
+                        getToolbar().setBackgroundColor(getColorOf(R.color.profile));
                         setFragment(R.id.fragment, ProfileFragment.class);
                         break;
                 }
