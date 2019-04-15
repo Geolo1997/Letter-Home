@@ -1,5 +1,7 @@
 package team.dorm301.letterhome.fragment;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +38,9 @@ public class ProfileFragment extends BaseFragment {
     LinearLayout llProfile;
     @BindView(R.id.history_view)
     LinearLayout historyView;
+    @BindView(R.id.ll_wallet_buttons)
+    LinearLayout walletButtons;
+    private int isWalletButtonsOn;
 
 
 
@@ -49,18 +54,29 @@ public class ProfileFragment extends BaseFragment {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         getBaseActivity().setToolbarTitle("我的");
-
+        isWalletButtonsOn = 0;
         return rootView;
     }
 
 
 
 
-    @OnClick({R.id.ll_profile, R.id.history_view, R.id.logout})
+    @OnClick({R.id.ll_profile,R.id.wallet, R.id.history_view, R.id.logout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_profile:
                 getBaseActivity().startActivity(ProfileActivity.class);
+                break;
+            case  R.id.wallet:
+                if(isWalletButtonsOn==1){
+                    walletButtons.setVisibility(View.GONE);
+                    isWalletButtonsOn = 0;
+                }
+                else{
+                    walletButtons.setVisibility(View.VISIBLE);
+                    togetherProperty(walletButtons);
+                    isWalletButtonsOn = 1;
+                }
                 break;
             case R.id.history_view:
                 getBaseActivity().startActivity(InboxActivity.class);
@@ -83,6 +99,16 @@ public class ProfileFragment extends BaseFragment {
                         });
                 break;
         }
+    }
+
+    public void togetherProperty(View myView) {
+        ObjectAnimator alphaAnim = ObjectAnimator.ofFloat(myView, "alpha", 0f, 1.0f);
+//        ObjectAnimator transXAnim = ObjectAnimator.ofFloat(myView, "translationX", 100, 400);
+        ObjectAnimator transYAnim = ObjectAnimator.ofFloat(myView, "translationY", -30f, 0);
+        AnimatorSet set = new AnimatorSet();
+        set.playTogether(alphaAnim, transYAnim);
+        set.setDuration(300);
+        set.start();
     }
 
 //    @OnClick(R.id.history_view)

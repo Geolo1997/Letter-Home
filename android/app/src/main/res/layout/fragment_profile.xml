@@ -16,13 +16,13 @@
             android:layout_marginBottom="15dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-    >
+            >
 
         <ImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="#4dbafd"
+                android:src="@drawable/information"
                 android:padding="8dp"/>
 
         <LinearLayout
@@ -48,36 +48,69 @@
 
         <!--钱包板块-->
         <LinearLayout
-                 android:id="@+id/asd"
+                android:id="@+id/wallet"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:orientation="horizontal"
-                android:background="#FFFFFF"
-                android:layout_marginBottom="15dp">
+                android:orientation="vertical"
+                android:background="#FFFFFF">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:orientation="horizontal"
+                    android:background="#FFFFFF">
+                <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="75dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/wallet"
+                        android:padding="8dp"/>
 
-            <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="#fd4d59"
-                    android:padding="8dp"/>
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:orientation="horizontal">
 
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="我的余额"
+                            android:layout_gravity="center"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <!--两个按钮-->
+        <LinearLayout
+                android:id="@+id/ll_wallet_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:visibility="gone">
             <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:orientation="horizontal">
-
+                    android:layout_weight="1"
+                    android:background="#9c0088ff"
+                    android:gravity="center">
                 <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="我的余额"
-                        android:layout_gravity="center"/>
-
-
-
+                        android:textSize="18sp"
+                        android:text="充值"
+                        android:gravity="center"/>
             </LinearLayout>
-
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#9cffe100"
+                    android:gravity="center">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#c6352e01"
+                        android:text="提现"/>
+            </LinearLayout>
         </LinearLayout>
         <!--历史块-->
         <LinearLayout
@@ -86,13 +119,14 @@
                 android:layout_height="75dp"
                 android:orientation="horizontal"
                 android:background="#FFFFFF"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp">
 
             <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="#fdcb4d"
+                    android:src="@drawable/outbox"
                     android:padding="8dp"/>
 
             <LinearLayout
@@ -125,7 +159,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="#4dfd76"
+                    android:src="@drawable/logout"
                     android:padding="8dp"/>
 
             <LinearLayout

@@ -1,6 +1,9 @@
 package team.dorm301.letterhome.activity;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -98,6 +101,8 @@ public class ProfileActivity extends BaseActivity {
                 .into(hHead);
         this.loadProfile();
     }
+
+
 
     @OnClick(R.id.bt_confim)
     public void onViewClicked() {

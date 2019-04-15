@@ -29,7 +29,7 @@ public class UserController {
         userService.update(user);
     }
 
-    @PutMapping("forget")
+    @GetMapping("forget")
     public String forget(@RequestParam String username) {
         return userService.forget(username);
     }

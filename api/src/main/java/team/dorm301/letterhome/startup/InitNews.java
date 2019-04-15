@@ -35,14 +35,14 @@ public class InitNews implements ApplicationListener<ContextRefreshedEvent> {
 
         List<News> newsList = new ArrayList<>();
 
-        for (int i = 0; i < 5; i ++) {
-            News news1 = new News();
-            news1.setAuthor("姜尼玛");
-            news1.setTitle("尼玛论尼玛");
-            news1.setContent("嘤嘤嘤");
-            news1.setImgUrl("https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1700514426,3179612910&fm=173&app=49&f=JPEG?w=218&h=146&s=ED02A0543E491E5348973E9C0300709C");
-            newsList.add(news1);
-        }
+//        for (int i = 0; i < 5; i ++) {
+            News news00 = new News();
+            news00.setAuthor("姜尼玛");
+            news00.setTitle("尼玛论尼玛");
+            news00.setContent("嘤嘤嘤");
+            news00.setImgUrl("https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1700514426,3179612910&fm=173&app=49&f=JPEG?w=218&h=146&s=ED02A0543E491E5348973E9C0300709C");
+            newsList.add(news00);
+//        }
 
         News news0 = new News();
         news0.setAuthor("亦舒");

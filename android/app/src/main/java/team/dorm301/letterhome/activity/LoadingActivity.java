@@ -1,8 +1,12 @@
 package team.dorm301.letterhome.activity;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.OnClick;
 import team.dorm301.letterhome.R;
@@ -23,6 +27,8 @@ public class LoadingActivity extends BaseActivity {
     @BindView(R.id.b_button1)
     Button bButton1;
     private CountDownTimer cut;
+    @BindView(R.id.iv_logo)
+    LinearLayout ivLogo;
 
     private AuthService authService;
 
@@ -35,6 +41,7 @@ public class LoadingActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         authService = Yunzhi.getBean(AuthService.class);
+        togetherProperty(ivLogo);
         cut = new CountDownTimer(COUNT_DOWN_TOTAL_TIME, COUNT_DOWN_INTERVAL_TIME) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -79,5 +86,15 @@ public class LoadingActivity extends BaseActivity {
         } else {
             startActivityAndFinish(LoginActivity.class);
         }
+    }
+
+    public void togetherProperty(View myView) {
+        ObjectAnimator alphaAnim = ObjectAnimator.ofFloat(myView, "alpha", 0f, 1.0f);
+//        ObjectAnimator transXAnim = ObjectAnimator.ofFloat(myView, "translationX", 100, 400);
+        ObjectAnimator transYAnim = ObjectAnimator.ofFloat(myView, "translationY", 120f, 0);
+        AnimatorSet set = new AnimatorSet();
+        set.playTogether(alphaAnim, transYAnim);
+        set.setDuration(1500);
+        set.start();
     }
 }

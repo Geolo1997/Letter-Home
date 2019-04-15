@@ -22,19 +22,25 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<News> getAllNews(Long size) {
+        if(size>10)size= 10L;
         List<News> primaryNewsList = newsRepository.findAll();
         int length = primaryNewsList.size();
+        System.out.println("----------------length"+size);
         if (CommonService.ids.size() >= 0.75 * length) {
             CommonService.ids.clear();
         }
+        Calendar currentTime = Calendar.getInstance();
         List<News> newsList = new ArrayList<>();
+
         for (int i = 0; i < size; i ++) {
-            int index = Math.toIntExact(CommonService.getRandomUniqueId(0L, (long) length - 1));
+            int index = (int) (Math.random()*primaryNewsList.size()-1);
+//            int index = Math.toIntExact(CommonService.getRandomUniqueId(0L, (long) length - 1));
             News news = primaryNewsList.get(index);
-            Calendar currentTime = Calendar.getInstance();
-            currentTime.add(Calendar.MINUTE, -CommonService.getRandomNumberInts(0, 15));
+//            currentTime.add(Calendar.MINUTE, -CommonService.getRandomNumberInts(0, 15));
+            currentTime.add(Calendar.MINUTE, -index);
             news.setPublishTime(currentTime);
             newsList.add(news);
+            primaryNewsList.remove(index);
         }
         return newsList;
     }
