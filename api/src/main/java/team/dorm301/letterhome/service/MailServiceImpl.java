@@ -52,7 +52,7 @@ public class MailServiceImpl implements MailService {
     public static void sendMail(String target, String title, String centent) throws Exception {
         Properties properties = new Properties();// 创建Properties对象
         properties.setProperty("mail.transport.protocol", "smtp");// 设置传输协议
-        properties.put("mail.smtp.host", "smtp.syin.xyz");
+        properties.put("mail.smtp.host", "smtp.163.com");
         properties.put("mail.debug", "true");//便于调试
         properties.put("mail.smtp.socketFactory.port", "465");
         properties.put("mail.smtp.socketFactory.class",
