@@ -61,7 +61,7 @@ public class MailServiceImpl implements MailService {
         properties.put("mail.smtp.port", "465");
 
         final String em = "geolo1997@163.com";
-        final String ep = "letterhome";
+        final String ep = "LETTERHOME163";
         Authenticator auth = new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
