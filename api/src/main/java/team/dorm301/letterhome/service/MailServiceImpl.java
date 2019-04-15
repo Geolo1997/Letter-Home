@@ -30,7 +30,7 @@ public class MailServiceImpl implements MailService {
     }
 
     @Override
-    public void sendEMail(String target, String subject, String content) throws Exception {
+    public void sendEMail(String target, String subject, String content) {
         logger.debug("新建邮件");
 //        SimpleMailMessage message = new SimpleMailMessage();
 //
@@ -41,7 +41,11 @@ public class MailServiceImpl implements MailService {
 //
 //        logger.debug("发送邮件");
 //        javaMailSender.send(message);
-        sendMail(target, subject, content);
+        try {
+            sendMail(target, subject, content);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
