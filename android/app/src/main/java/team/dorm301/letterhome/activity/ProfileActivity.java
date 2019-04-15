@@ -69,10 +69,10 @@ public class ProfileActivity extends BaseActivity {
                     @Override
                     public void onNext(User user) {
                         userName.setText(user.getUsername());
-                        userVal.setText(user.getPhone());
+                        userVal.setText(user.getTelephone());
                         etChangeName.setText(user.getUsername());
                         etChangeMailboxNumber.setText(user.getEmail());
-                        etChangePhoneNumber.setText(user.getPhone());
+                        etChangePhoneNumber.setText(user.getTelephone());
                         if (user.isSex()) {
                             cbChooseMan.setChecked(true);
                         } else cbChooseWoman.setChecked(true);
@@ -109,7 +109,7 @@ public class ProfileActivity extends BaseActivity {
         User user = new User();
         user.setUsername(etChangeName.getText().toString());
         user.setEmail(etChangeMailboxNumber.getText().toString());
-        user.setPhone(etChangePhoneNumber.getText().toString());
+        user.setTelephone(etChangePhoneNumber.getText().toString());
         if (cbChooseMan.isChecked()) {
             user.setSex(cbChooseMan.isChecked());
         }
