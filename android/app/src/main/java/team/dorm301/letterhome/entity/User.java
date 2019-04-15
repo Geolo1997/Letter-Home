@@ -7,17 +7,17 @@ public class User implements Serializable {
     private String username;
     private String password;
     private boolean sex;
-    private String phone;
+    private String telephone;
     private String email;
 
     public User() {
     }
 
-    public User(String username, String password, boolean sex, String phone, String email) {
+    public User(String username, String password, boolean sex, String telephone, String email) {
         this.username = username;
         this.password = password;
         this.sex = sex;
-        this.phone = phone;
+        this.telephone = telephone;
         this.email = email;
     }
 
@@ -45,12 +45,12 @@ public class User implements Serializable {
         this.sex = sex;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getEmail() {
